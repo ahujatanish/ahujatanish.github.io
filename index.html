@@ -1,841 +1,719 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Tanish Ahuja — AI Product Builder</title>
-
-  <meta
-    name="description"
-    content="Tanish Ahuja — AI Product Builder creating practical AI-powered applications and digital products."
-  />
-
-  <style>
-    /* =========================
-       BASE
-    ========================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-      background: #010736;
-      color: #fff2cc;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    :root {
-      --navy: #010736;
-      --dark-blue: #0f1e46;
-      --blue: #263f78;
-
-      --cream: #fff2cc;
-      --cream-soft: #f7f0d8;
-
-      --text: #fff2cc;
-      --text-soft: #d9deea;
-      --muted: #aeb8d0;
-
-      --border: rgba(255, 242, 204, 0.14);
-      --border-strong: rgba(255, 242, 204, 0.24);
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      height: 72px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 6vw;
-
-      background: rgba(1, 7, 54, 0.9);
-      backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      color: var(--cream);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .nav-links a {
-      transition: 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--cream);
-    }
-
-    /* =========================
-       COMMON
-    ========================= */
-
-    section {
-      position: relative;
-      padding: 120px 6vw;
-      border-bottom: 1px solid rgba(255, 242, 204, 0.08);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .eyebrow {
-      margin-bottom: 20px;
-
-      color: #8796bb;
-
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      max-width: 850px;
-      margin-bottom: 60px;
-
-      font-size: clamp(45px, 6vw, 78px);
-      line-height: 0.96;
-      letter-spacing: -4px;
-
-      color: var(--cream);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: calc(100vh - 72px);
-
-      display: flex;
-      align-items: center;
-
-      padding-top: 100px;
-      padding-bottom: 100px;
-
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 650px;
-      height: 650px;
-
-      right: -220px;
-      top: 50px;
-
-      background: radial-gradient(
-        circle,
-        rgba(38, 63, 120, 0.45) 0%,
-        rgba(38, 63, 120, 0.15) 40%,
-        transparent 70%
-      );
-
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-
-      max-width: 1050px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 8px 14px;
-
-      border: 1px solid var(--border-strong);
-      border-radius: 999px;
-
-      background: rgba(15, 30, 70, 0.8);
-
-      color: var(--cream);
-
-      font-size: 13px;
-
-      margin-bottom: 32px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--cream);
-
-      box-shadow: 0 0 12px rgba(255, 242, 204, 0.5);
-    }
-
-    .hero h1 {
-      max-width: 1050px;
-
-      font-size: clamp(60px, 9vw, 122px);
-      line-height: 0.88;
-
-      letter-spacing: -7px;
-
-      color: var(--cream);
-    }
-
-    .hero h1 span {
-      color: #7890c2;
-    }
-
-    .hero-description {
-      max-width: 680px;
-
-      margin-top: 38px;
-
-      color: var(--muted);
-
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-
-      margin-top: 36px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-height: 46px;
-
-      padding: 12px 20px;
-
-      border-radius: 9px;
-
-      border: 1px solid var(--border-strong);
-
-      font-size: 14px;
-      font-weight: 600;
-
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--cream);
-      color: var(--navy);
-      border-color: var(--cream);
-    }
-
-    .btn-primary:hover {
-      background: #ffffff;
-      border-color: #ffffff;
-    }
-
-    .btn-secondary {
-      background: rgba(15, 30, 70, 0.5);
-      color: var(--cream);
-    }
-
-    .btn-secondary:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    /* =========================
-       WORK
-    ========================= */
-
-    .projects {
-      display: grid;
-      grid-template-columns: 1fr;
-
-      gap: 70px;
-    }
-
-    .project {
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-      border-radius: 22px;
-
-      background: var(--dark-blue);
-
-      box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.18);
-
-      transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-strong);
-    }
-
-    .project-image {
-      padding: 18px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #010736,
-          #0f1e46
-        );
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-image img {
-      width: 100%;
-
-      max-height: 680px;
-
-      object-fit: cover;
-      object-position: top;
-
-      border-radius: 13px;
-
-      border: 1px solid rgba(255, 255, 255, 0.08);
-
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.25);
-    }
-
-    .project-content {
-      padding: 38px;
-    }
-
-    .project-number {
-      margin-bottom: 9px;
-
-      color: #7890c2;
-
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-    }
-
-    .project h3 {
-      margin-bottom: 13px;
-
-      color: var(--cream);
-
-      font-size: 40px;
-      line-height: 1;
-
-      letter-spacing: -1.8px;
-    }
-
-    .project-description {
-      max-width: 800px;
-
-      color: var(--muted);
-
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      margin-top: 23px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-
-      border: 1px solid var(--border-strong);
-      border-radius: 999px;
-
-      color: var(--text-soft);
-
-      background: rgba(1, 7, 54, 0.3);
-
-      font-size: 11px;
-    }
-
-    .project-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-
-      margin-top: 27px;
-    }
-
-    /* =========================
-       MEMORA
-    ========================= */
-
-    .memora {
-      padding: 45px;
-
-      border: 1px solid var(--border);
-      border-radius: 22px;
-
-      background:
-        radial-gradient(
-          circle at 85% 10%,
-          rgba(38, 63, 120, 0.55),
-          transparent 38%
-        ),
-        var(--dark-blue);
-    }
-
-    .status {
-      display: inline-block;
-
-      margin-bottom: 22px;
-
-      padding: 6px 11px;
-
-      border: 1px solid var(--border-strong);
-      border-radius: 999px;
-
-      color: var(--cream);
-
-      background: rgba(1, 7, 54, 0.35);
-
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .memora h3 {
-      margin-bottom: 14px;
-
-      color: var(--cream);
-
-      font-size: 42px;
-      letter-spacing: -2px;
-    }
-
-    /* =========================
-       SKILLS
-    ========================= */
-
-    .skills-grid {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 12px;
-    }
-
-    .skill {
-      min-height: 72px;
-
-      display: flex;
-      align-items: center;
-
-      padding: 20px;
-
-      border: 1px solid var(--border);
-      border-radius: 13px;
-
-      background: rgba(15, 30, 70, 0.75);
-
-      color: var(--text-soft);
-
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .skill:hover {
-      transform: translateY(-3px);
-
-      background: var(--blue);
-
-      border-color: rgba(255, 242, 204, 0.25);
-
-      color: var(--cream);
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about-grid {
-      display: grid;
-
-      grid-template-columns: 0.8fr 1.2fr;
-
-      gap: 90px;
-    }
-
-    .about-heading {
-      color: var(--cream);
-
-      font-size: 52px;
-      line-height: 0.98;
-
-      letter-spacing: -2.5px;
-    }
-
-    .about-text {
-      color: var(--muted);
-
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-    .about-text p {
-      margin-bottom: 25px;
-    }
-
-    .focus-box {
-      margin-top: 32px;
-      padding-top: 25px;
-
-      border-top: 1px solid var(--border);
-
-      color: var(--text-soft);
-    }
-
-    .focus-box strong {
-      color: var(--cream);
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
-
-    .contact-box {
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 75px;
-
-      border: 1px solid var(--border-strong);
-      border-radius: 24px;
-
-      background:
-        radial-gradient(
-          circle at 85% 15%,
-          rgba(38, 63, 120, 0.7),
-          transparent 38%
-        ),
-        #0f1e46;
-    }
-
-    .contact-box::after {
-      content: "";
-
-      position: absolute;
-
-      width: 350px;
-      height: 350px;
-
-      right: -180px;
-      bottom: -180px;
-
-      border-radius: 50%;
-
-      background: rgba(255, 242, 204, 0.05);
-
-      pointer-events: none;
-    }
-
-    .contact-box h2 {
-      position: relative;
-      z-index: 1;
-
-      max-width: 850px;
-
-      color: var(--cream);
-
-      font-size: clamp(52px, 7vw, 92px);
-
-      line-height: 0.9;
-
-      letter-spacing: -5px;
-    }
-
-    .contact-box p {
-      position: relative;
-      z-index: 1;
-
-      max-width: 650px;
-
-      margin-top: 27px;
-
-      color: var(--muted);
-
-      font-size: 17px;
-    }
-
-    .socials {
-      position: relative;
-      z-index: 2;
-
-      display: flex;
-      gap: 26px;
-
-      margin-top: 36px;
-    }
-
-    .socials a {
-      padding-bottom: 4px;
-
-      border-bottom: 1px solid rgba(255, 242, 204, 0.35);
-
-      color: var(--cream);
-
-      font-size: 14px;
-
-      transition: 0.25s ease;
-    }
-
-    .socials a:hover {
-      border-color: var(--cream);
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 26px 6vw;
-
-      background: #010736;
-
-      color: #7583a5;
-
-      font-size: 12px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      nav {
-        padding: 0 5vw;
-      }
-
-      .nav-links {
-        gap: 16px;
-        font-size: 12px;
-      }
-
-      section {
-        padding: 85px 5vw;
-      }
-
-      .hero {
-        min-height: calc(100vh - 72px);
-        padding-top: 75px;
-        padding-bottom: 75px;
-      }
-
-      .hero h1 {
-        font-size: 61px;
-        letter-spacing: -4px;
-      }
-
-      .hero-description {
-        font-size: 16px;
-      }
-
-      .section-title {
-        font-size: 50px;
-        letter-spacing: -3px;
-      }
-
-      .project-content {
-        padding: 27px;
-      }
-
-      .project h3 {
-        font-size: 34px;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .about-heading {
-        font-size: 45px;
-      }
-
-      .contact-box {
-        padding: 45px 28px;
-      }
-
-      .contact-box h2 {
-        font-size: 53px;
-        letter-spacing: -3px;
-      }
-    }
-
-    @media (max-width: 520px) {
-
-      .nav-links a:nth-child(2) {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 52px;
-        letter-spacing: -3px;
-      }
-
-      .section-title {
-        font-size: 43px;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .memora {
-        padding: 30px 25px;
-      }
-
-      .memora h3 {
-        font-size: 35px;
-      }
-
-      .contact-box h2 {
-        font-size: 44px;
-        letter-spacing: -2.5px;
-      }
-
-      footer {
-        padding: 24px 5vw;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Tanish Ahuja — AI product builder creating practical AI-powered web applications and digital products.">
+
+<title>Tanish Ahuja — AI Product Builder</title>
+
+<style>
+:root{
+  --navy:#050A30;
+  --navy-2:#112250;
+  --blue:#29457F;
+  --cream:#FFF3D0;
+  --cream-soft:#fff8e8;
+  --white:#ffffff;
+  --text:#f7f8ff;
+  --muted:#aab3ca;
+  --border:rgba(255,255,255,.12);
+  --card:rgba(17,34,80,.38);
+  --green:#5ee6a8;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background:
+    radial-gradient(circle at 75% 12%, rgba(41,69,127,.28), transparent 28%),
+    var(--navy);
+  color:var(--text);
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+.container{
+  width:min(1180px, calc(100% - 40px));
+  margin:auto;
+}
+
+/* NAVIGATION */
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,10,48,.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:-.04em;
+}
+
+.logo span{
+  color:var(--cream);
+}
+
+.nav-links{
+  display:flex;
+  gap:32px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.nav-links a{
+  transition:.2s ease;
+}
+
+.nav-links a:hover{
+  color:var(--cream);
+}
+
+/* HERO */
+
+.hero{
+  min-height:calc(100vh - 76px);
+  display:flex;
+  align-items:center;
+  padding:100px 0 120px;
+  border-bottom:1px solid var(--border);
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:80px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:7px 12px;
+  border:1px solid rgba(255,243,208,.2);
+  border-radius:999px;
+  color:var(--cream);
+  background:rgba(255,243,208,.04);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:26px;
+}
+
+.dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--cream);
+}
+
+.hero h1{
+  font-size:clamp(58px,8vw,108px);
+  line-height:.92;
+  letter-spacing:-.075em;
+  max-width:900px;
+}
+
+.hero h1 .accent{
+  color:var(--cream);
+}
+
+.hero-text{
+  max-width:650px;
+  color:var(--muted);
+  font-size:18px;
+  margin-top:30px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  margin-top:38px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 20px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:700;
+  border:1px solid var(--border);
+  transition:.2s ease;
+}
+
+.btn-primary{
+  background:var(--cream);
+  color:var(--navy);
+  border-color:var(--cream);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.03);
+  color:var(--white);
+}
+
+.btn-secondary:hover{
+  background:rgba(255,255,255,.08);
+}
+
+/* HERO VISUAL */
+
+.hero-visual{
+  min-height:390px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:
+    linear-gradient(145deg, rgba(41,69,127,.45), rgba(17,34,80,.18)),
+    rgba(0,0,0,.18);
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-visual:before{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:var(--blue);
+  opacity:.22;
+  filter:blur(70px);
+  border-radius:50%;
+  right:-70px;
+  top:-70px;
+}
+
+.browser{
+  position:relative;
+  height:100%;
+  min-height:340px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:#07102f;
+  overflow:hidden;
+}
+
+.browser-top{
+  height:44px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:0 15px;
+  border-bottom:1px solid var(--border);
+}
+
+.browser-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#6e7890;
+}
+
+.browser-content{
+  padding:30px;
+}
+
+.browser-label{
+  font-size:10px;
+  letter-spacing:.18em;
+  color:#7f8aa4;
+  text-transform:uppercase;
+}
+
+.browser-title{
+  margin-top:12px;
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:-.04em;
+}
+
+.browser-line{
+  height:8px;
+  background:#29457f;
+  border-radius:10px;
+  margin-top:20px;
+  width:75%;
+}
+
+.browser-line.short{
+  width:48%;
+  opacity:.55;
+}
+
+.browser-cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:30px;
+}
+
+.browser-card{
+  height:90px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  background:rgba(41,69,127,.22);
+}
+
+/* SECTION */
+
+section{
+  padding:120px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.section-label{
+  color:#8290ae;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:11px;
+  margin-bottom:18px;
+}
+
+.section-title{
+  font-size:clamp(42px,6vw,72px);
+  letter-spacing:-.065em;
+  line-height:.98;
+}
+
+.section-intro{
+  color:var(--muted);
+  max-width:650px;
+  margin-top:22px;
+}
+
+/* PROJECTS */
+
+.projects{
+  margin-top:60px;
+  display:grid;
+  gap:70px;
+}
+
+.project{
+  border:1px solid var(--border);
+  border-radius:24px;
+  overflow:hidden;
+  background:
+    linear-gradient(145deg, rgba(17,34,80,.55), rgba(5,10,48,.5));
+}
+
+.project-gallery{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:1px;
+  background:var(--border);
+  min-height:430px;
+}
+
+.project-main-image{
+  background:#091331;
+  overflow:hidden;
+}
+
+.project-main-image img{
+  width:100%;
+  height:100%;
+  min-height:430px;
+  object-fit:cover;
+  object-position:top;
+  transition:.4s ease;
+}
+
+.project-main-image img:hover{
+  transform:scale(1.015);
+}
+
+.project-thumbs{
+  display:grid;
+  grid-template-rows:repeat(2,1fr);
+  gap:1px;
+  background:var(--border);
+}
+
+.project-thumb{
+  overflow:hidden;
+  background:#091331;
+}
+
+.project-thumb img{
+  width:100%;
+  height:100%;
+  min-height:210px;
+  object-fit:cover;
+  object-position:top;
+  transition:.3s ease;
+}
+
+.project-thumb img:hover{
+  transform:scale(1.03);
+}
+
+.project-info{
+  padding:34px;
+}
+
+.project-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.project-number{
+  font-size:11px;
+  color:#8793ad;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.project h3{
+  font-size:38px;
+  letter-spacing:-.05em;
+  margin-top:8px;
+}
+
+.project-description{
+  max-width:760px;
+  color:var(--muted);
+  margin-top:14px;
+  font-size:16px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:24px;
+}
+
+.tag{
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:999px;
+  color:#c5cce0;
+  font-size:11px;
+  background:rgba(255,255,255,.025);
+}
+
+.project-actions{
+  margin-top:26px;
+}
+
+/* SKILLS */
+
+.skills-grid{
+  margin-top:55px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.skill{
+  padding:24px;
+  min-height:100px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:rgba(17,34,80,.28);
+  color:#dce2f0;
+  transition:.2s ease;
+}
+
+.skill:hover{
+  border-color:rgba(255,243,208,.35);
+  background:rgba(41,69,127,.3);
+  transform:translateY(-2px);
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:100px;
+}
+
+.about-title{
+  font-size:clamp(40px,5vw,64px);
+  line-height:1;
+  letter-spacing:-.06em;
+}
+
+.about-copy{
+  color:var(--muted);
+  font-size:17px;
+}
+
+.about-copy p + p{
+  margin-top:22px;
+}
+
+.focus-box{
+  margin-top:32px;
+  padding-top:25px;
+  border-top:1px solid var(--border);
+  color:#dfe5f3;
+}
+
+/* CONTACT */
+
+.contact-card{
+  border:1px solid rgba(255,243,208,.15);
+  border-radius:24px;
+  padding:65px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(41,69,127,.5), transparent 32%),
+    linear-gradient(145deg, #112250, #070d2a);
+}
+
+.contact-card h2{
+  font-size:clamp(48px,7vw,84px);
+  line-height:.94;
+  letter-spacing:-.07em;
+  max-width:800px;
+}
+
+.contact-card p{
+  color:var(--muted);
+  max-width:650px;
+  margin-top:24px;
+  font-size:17px;
+}
+
+.contact-links{
+  display:flex;
+  gap:25px;
+  margin-top:32px;
+  flex-wrap:wrap;
+}
+
+.text-link{
+  color:var(--cream);
+  border-bottom:1px solid rgba(255,243,208,.35);
+  padding-bottom:3px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:28px 0;
+  color:#77829d;
+  font-size:12px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .hero-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .hero{
+    padding:75px 0 90px;
+  }
+
+  .hero-visual{
+    min-height:320px;
+  }
+
+  .skills-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .project-gallery{
+    grid-template-columns:1fr;
+  }
+
+  .project-thumbs{
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:1fr;
+  }
+
+  .project-thumb img{
+    min-height:170px;
+  }
+
+  .contact-card{
+    padding:40px 28px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .container{
+    width:min(100% - 28px, 1180px);
+  }
+
+  .nav-inner{
+    height:68px;
+  }
+
+  .nav-links{
+    gap:14px;
+    font-size:12px;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  .hero h1{
+    font-size:58px;
+  }
+
+  .hero-text{
+    font-size:16px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  section{
+    padding:80px 0;
+  }
+
+  .skills-grid{
+    grid-template-columns:1fr;
+  }
+
+  .project-gallery{
+    display:block;
+  }
+
+  .project-main-image img{
+    min-height:280px;
+  }
+
+  .project-thumbs{
+    display:grid;
+  }
+
+  .project-info{
+    padding:25px;
+  }
+
+  .project h3{
+    font-size:32px;
+  }
+
+  .project-top{
+    align-items:flex-start;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+<!-- NAVIGATION -->
 
-  <nav>
+<header class="nav">
+  <div class="container nav-inner">
 
-    <a href="#top" class="logo">
-      Tanish.
+    <a href="#" class="logo">
+      Tanish<span>.</span>
     </a>
 
-    <div class="nav-links">
+    <nav class="nav-links">
       <a href="#work">Work</a>
       <a href="#skills">Skills</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-    </div>
+    </nav>
 
-  </nav>
+  </div>
+</header>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+<!-- HERO -->
 
-  <section class="hero" id="top">
+<main>
 
-    <div class="container hero-content">
+<section class="hero">
 
-      <div class="badge">
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
         <span class="dot"></span>
         AI Product Builder
       </div>
 
       <h1>
-        Building useful<br />
-        <span>AI products.</span>
+        Building useful
+        <span class="accent">AI products.</span>
       </h1>
 
-      <p class="hero-description">
-        I create practical AI-powered applications and digital products
-        focused on solving real-world problems through simple and useful
-        experiences.
+      <p class="hero-text">
+        I turn ideas into practical AI-powered applications and
+        digital products, focusing on useful workflows, clean
+        interfaces and real-world problems.
       </p>
 
-      <div class="buttons">
+      <div class="hero-actions">
 
         <a href="#work" class="btn btn-primary">
           Explore my work ↓
@@ -849,208 +727,202 @@
 
     </div>
 
-  </section>
 
+    <div class="hero-visual">
 
-  <!-- =========================
-       PROJECTS
-  ========================= -->
+      <div class="browser">
 
-  <section id="work">
+        <div class="browser-top">
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+        </div>
 
-    <div class="container">
+        <div class="browser-content">
 
-      <div class="eyebrow">
-        Selected work
+          <div class="browser-label">
+            AI PRODUCT BUILDER
+          </div>
+
+          <div class="browser-title">
+            Ideas → Products
+          </div>
+
+          <div class="browser-line"></div>
+          <div class="browser-line short"></div>
+
+          <div class="browser-cards">
+            <div class="browser-card"></div>
+            <div class="browser-card"></div>
+            <div class="browser-card"></div>
+            <div class="browser-card"></div>
+          </div>
+
+        </div>
+
       </div>
 
-      <h2 class="section-title">
-        Products I've built.
-      </h2>
+    </div>
+
+  </div>
+
+</section>
 
 
-      <div class="projects">
+<!-- WORK -->
+
+<section id="work">
+
+  <div class="container">
+
+    <div class="section-label">
+      Selected work
+    </div>
+
+    <h2 class="section-title">
+      Products I've built.
+    </h2>
+
+    <p class="section-intro">
+      A selection of practical AI and web products focused on
+      solving specific problems through simple interfaces.
+    </p>
 
 
-        <!-- QUICKBILL -->
+    <div class="projects">
 
-        <article class="project">
 
-          <div class="project-image">
+      <!-- QUICKBILL -->
 
+      <article class="project">
+
+        <div class="project-gallery">
+
+          <div class="project-main-image">
             <img
               src="Screenshot%20(933).png"
               alt="QuickBill AI dashboard"
-            />
-
+            >
           </div>
 
+          <div class="project-thumbs">
 
-          <div class="project-content">
-
-            <div class="project-number">
-              01 / PRODUCT
-            </div>
-
-            <h3>
-              QuickBill AI
-            </h3>
-
-            <p class="project-description">
-              A lightweight billing and invoice application for small
-              businesses. It helps users create bills, manage products
-              and customers, track payments, view business analytics,
-              and generate professional PDF invoices.
-            </p>
-
-
-            <div class="tags">
-
-              <span class="tag">
-                AI Product
-              </span>
-
-              <span class="tag">
-                Web App
-              </span>
-
-              <span class="tag">
-                Billing
-              </span>
-
-              <span class="tag">
-                Analytics
-              </span>
-
-              <span class="tag">
-                PDF Invoices
-              </span>
-
-            </div>
-
-
-            <div class="project-actions">
-
-              <a
-                href="https://quickbill-ai.ai.studio"
-                target="_blank"
-                class="btn btn-primary"
+            <div class="project-thumb">
+              <img
+                src="Screenshot%20(934).png"
+                alt="QuickBill AI analytics"
               >
-                Live Demo ↗
-              </a>
+            </div>
 
+            <div class="project-thumb">
+              <img
+                src="Screenshot%20(935).png"
+                alt="QuickBill AI invoice directory"
+              >
             </div>
 
           </div>
 
-        </article>
+        </div>
 
 
-        <!-- QUICKBILL ANALYTICS -->
+        <div class="project-info">
 
-        <article class="project">
+          <div class="project-top">
 
-          <div class="project-image">
+            <div>
+              <div class="project-number">
+                01 / BUSINESS SOFTWARE
+              </div>
+
+              <h3>
+                QuickBill AI
+              </h3>
+            </div>
+
+          </div>
+
+          <p class="project-description">
+            A lightweight billing and invoice application for small
+            businesses to create bills, manage products and customers,
+            track payments and generate professional PDF invoices.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">AI</span>
+            <span class="tag">Web App</span>
+            <span class="tag">Billing</span>
+            <span class="tag">Invoices</span>
+            <span class="tag">PDF Export</span>
+            <span class="tag">Inventory</span>
+            <span class="tag">Analytics</span>
+
+          </div>
+
+          <div class="project-actions">
+
+            <a
+              href="https://quickbill-ai.ai.studio"
+              target="_blank"
+              class="btn btn-primary"
+            >
+              View QuickBill AI ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- MEMORA -->
+
+      <article class="project">
+
+        <div class="project-gallery">
+
+          <div class="project-main-image">
 
             <img
-              src="Screenshot%20(934).png"
-              alt="QuickBill AI analytics dashboard"
-            />
+              src="Screenshot%20(946).png"
+              alt="Memora AI learning platform"
+            >
 
           </div>
 
-          <div class="project-content">
 
-            <div class="project-number">
-              QUICKBILL / ANALYTICS
+          <div class="project-thumbs">
+
+            <div class="project-thumb">
+
+              <img
+                src="Screenshot%20(947).png"
+                alt="Memora study dashboard"
+              >
+
             </div>
 
-            <h3>
-              Business analytics
-            </h3>
 
-            <p class="project-description">
-              A dashboard for viewing sales, collections and invoice
-              activity across selected periods.
-            </p>
+            <div class="project-thumb">
 
-          </div>
+              <img
+                src="Screenshot%20(948).png"
+                alt="Memora Focus Study Mode"
+              >
 
-        </article>
-
-
-        <!-- QUICKBILL INVOICES -->
-
-        <article class="project">
-
-          <div class="project-image">
-
-            <img
-              src="Screenshot%20(935).png"
-              alt="QuickBill AI invoice directory"
-            />
-
-          </div>
-
-          <div class="project-content">
-
-            <div class="project-number">
-              QUICKBILL / INVOICING
             </div>
 
-            <h3>
-              Invoice management
-            </h3>
-
-            <p class="project-description">
-              Search, filter and manage generated bills from a central
-              invoice directory.
-            </p>
-
           </div>
 
-        </article>
+        </div>
 
 
-        <!-- QUICKBILL PDF -->
+        <div class="project-info">
 
-        <article class="project">
-
-          <div class="project-image">
-
-            <img
-              src="Screenshot%20(936).png"
-              alt="QuickBill AI generated PDF invoice"
-            />
-
-          </div>
-
-          <div class="project-content">
-
-            <div class="project-number">
-              QUICKBILL / PDF
-            </div>
-
-            <h3>
-              Professional PDF invoices
-            </h3>
-
-            <p class="project-description">
-              Generate clean, printable PDF bills containing customer,
-              product, payment and billing information.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- MEMORA -->
-
-        <article class="memora">
-
-          <div class="status">
-            IN DEVELOPMENT
+          <div class="project-number">
+            02 / AI EDUCATION PRODUCT
           </div>
 
           <h3>
@@ -1058,210 +930,208 @@
           </h3>
 
           <p class="project-description">
-            An AI education platform concept designed to help teachers
-            create study materials, worksheets, quizzes, question papers
-            and other classroom resources.
+            An AI-powered learning workspace designed to turn
+            course materials into an active study system with
+            smart notes, flashcards, quizzes, exams, progress
+            tracking and focused study workflows.
           </p>
-
 
           <div class="tags">
 
-            <span class="tag">
-              Generative AI
-            </span>
-
-            <span class="tag">
-              Education
-            </span>
-
-            <span class="tag">
-              AI Tools
-            </span>
-
-            <span class="tag">
-              Web App
-            </span>
+            <span class="tag">Generative AI</span>
+            <span class="tag">Education</span>
+            <span class="tag">Study Tools</span>
+            <span class="tag">Flashcards</span>
+            <span class="tag">Quiz & Exams</span>
+            <span class="tag">Progress</span>
+            <span class="tag">AI Tutor</span>
 
           </div>
 
-        </article>
+          <div class="project-actions">
 
+            <a
+              href="https://memorastudy.ai.studio"
+              target="_blank"
+              class="btn btn-primary"
+            >
+              View Memora ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+  <div class="container">
+
+    <div class="section-label">
+      Capabilities
+    </div>
+
+    <h2 class="section-title">
+      What I work with.
+    </h2>
+
+    <div class="skills-grid">
+
+      <div class="skill">
+        Generative AI
+      </div>
+
+      <div class="skill">
+        AI Product Building
+      </div>
+
+      <div class="skill">
+        Prompt Engineering
+      </div>
+
+      <div class="skill">
+        AI Prototyping
+      </div>
+
+      <div class="skill">
+        Web Applications
+      </div>
+
+      <div class="skill">
+        UI / UX
+      </div>
+
+      <div class="skill">
+        AI Automation
+      </div>
+
+      <div class="skill">
+        Digital Products
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- =========================
-       SKILLS
-  ========================= -->
+<!-- ABOUT -->
 
-  <section id="skills">
+<section id="about">
 
-    <div class="container">
+  <div class="container about-grid">
 
-      <div class="eyebrow">
-        Capabilities
+    <div>
+
+      <div class="section-label">
+        About me
       </div>
 
-      <h2 class="section-title">
-        What I work with.
+      <h2 class="about-title">
+        From idea to
+        working product.
       </h2>
 
+    </div>
 
-      <div class="skills-grid">
 
-        <div class="skill">
-          Generative AI
-        </div>
+    <div class="about-copy">
 
-        <div class="skill">
-          AI Product Building
-        </div>
+      <p>
+        I'm Tanish Ahuja, an AI-focused product builder interested
+        in creating useful software with modern AI tools.
+      </p>
 
-        <div class="skill">
-          Prompt Engineering
-        </div>
+      <p>
+        I like taking an idea from concept to a working product —
+        defining the experience, designing the workflow and turning
+        complicated problems into simple interfaces.
+      </p>
 
-        <div class="skill">
-          AI Prototyping
-        </div>
+      <p>
+        My current focus is building practical AI products across
+        business, productivity and education.
+      </p>
 
-        <div class="skill">
-          Google AI Studio
-        </div>
+      <div class="focus-box">
+        Currently building:
+        <strong>QuickBill AI</strong> and
+        <strong>Memora</strong>.
+      </div>
 
-        <div class="skill">
-          AI Automation
-        </div>
+    </div>
 
-        <div class="skill">
-          UI / UX Design
-        </div>
+  </div>
 
-        <div class="skill">
-          Web Applications
-        </div>
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+  <div class="container">
+
+    <div class="contact-card">
+
+      <div class="section-label">
+        Contact
+      </div>
+
+      <h2>
+        Let's build something useful.
+      </h2>
+
+      <p>
+        Interested in AI products, digital experiences or
+        practical software ideas? Connect with me.
+      </p>
+
+      <div class="contact-links">
+
+        <a
+          href="https://github.com/ahujatanish"
+          target="_blank"
+          class="text-link"
+        >
+          GitHub ↗
+        </a>
+
+        <a
+          href="https://www.instagram.com/tanishahuja81"
+          target="_blank"
+          class="text-link"
+        >
+          Instagram ↗
+        </a>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
+
+</main>
 
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+<!-- FOOTER -->
 
-  <section id="about">
+<footer>
 
-    <div class="container about-grid">
-
-      <div>
-
-        <div class="eyebrow">
-          About me
-        </div>
-
-        <h2 class="about-heading">
-          From idea to<br />
-          working product.
-        </h2>
-
-      </div>
-
-
-      <div class="about-text">
-
-        <p>
-          I'm Tanish Ahuja, an AI-focused product builder interested
-          in creating useful software with modern AI tools.
-        </p>
-
-        <p>
-          I like taking an idea from concept to a working product —
-          defining the experience, designing the workflow and turning
-          complicated problems into simple interfaces.
-        </p>
-
-        <p>
-          My current focus is building practical AI products across
-          business, productivity and education.
-        </p>
-
-
-        <div class="focus-box">
-
-          Currently building:
-          <strong>QuickBill AI</strong>
-          and
-          <strong>Memora</strong>.
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
-
-  <section id="contact">
-
-    <div class="container">
-
-      <div class="contact-box">
-
-        <div class="eyebrow">
-          Contact
-        </div>
-
-        <h2>
-          Let's build something useful.
-        </h2>
-
-        <p>
-          Interested in AI products, digital experiences or practical
-          software ideas? Connect with me.
-        </p>
-
-
-        <div class="socials">
-
-          <a
-            href="https://github.com/ahujatanish"
-            target="_blank"
-          >
-            GitHub ↗
-          </a>
-
-          <a
-            href="https://www.instagram.com/tanishahuja81/"
-            target="_blank"
-          >
-            Instagram ↗
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer>
+  <div class="container footer-inner">
 
     <span>
       © 2026 Tanish Ahuja
@@ -1271,8 +1141,9 @@
       AI Product Builder
     </span>
 
-  </footer>
+  </div>
 
+</footer>
 
 </body>
 </html>
