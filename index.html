@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tanish Ahuja — AI Product Builder creating practical AI-powered applications and digital products.">
+  <title>Tanish Ahuja — AI Product Builder</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #070707;
+      --card: #101010;
+      --card-hover: #151515;
+      --text: #f5f5f5;
+      --muted: #9b9b9b;
+      --border: #242424;
+      --accent: #ffffff;
+      --max: 1120px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,7,7,.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,.08), transparent 65%);
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: #0d0d0d;
+      padding: 7px 13px;
+      border-radius: 100px;
+      color: #bbb;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(52px, 8vw, 92px);
+      line-height: .98;
+      letter-spacing: -5px;
+      margin-bottom: 28px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #fff, #777);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 19px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #ddd;
+    }
+
+    .btn-secondary {
+      background: #101010;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #191919;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .section-label {
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -2px;
+      margin-bottom: 45px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 18px;
+      padding: 30px;
+      transition: .25s;
+      display: flex;
+      flex-direction: column;
+      min-height: 340px;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      background: var(--card-hover);
+      border-color: #3a3a3a;
+    }
+
+    .project-number {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 45px;
+    }
+
+    .project h3 {
+      font-size: 29px;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .project p {
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 25px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 25px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      color: #aaa;
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    .project-link {
+      margin-top: auto;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project-link span {
+      color: #777;
+      margin-left: 5px;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      padding: 22px;
+      border-radius: 12px;
+      background: #0c0c0c;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 70px;
+    }
+
+    .about-heading {
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 55px;
+      background: linear-gradient(135deg, #111, #090909);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(35px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 550px;
+      margin-bottom: 28px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .socials a:hover {
+      color: white;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .projects,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        padding: 35px 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">Tanish.</a>
+
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="dot"></span>
+          AI Product Builder
+        </div>
+
+        <h1>
+          Building useful
+          <span class="gradient">AI products.</span>
+        </h1>
+
+        <p class="hero-text">
+          I create practical AI-powered applications and digital products
+          focused on solving real-world problems through simple and useful experiences.
+        </p>
+
+        <div class="buttons">
+          <a href="#work" class="btn btn-primary">View my work</a>
+          <a href="#contact" class="btn btn-secondary">Contact me</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- PROJECTS -->
+
+  <section id="work">
+    <div class="container">
+
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Projects I've built.</h2>
+
+      <div class="projects">
+
+        <!-- QUICKBILL -->
+
+        <article class="project">
+          <div class="project-number">01 / PRODUCT</div>
+
+          <h3>QuickBill AI</h3>
+
+          <p>
+            A lightweight billing and invoice application designed for
+            small businesses to create bills, manage products and customers,
+            and generate professional PDF invoices.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AI</span>
+            <span class="tag">Web App</span>
+            <span class="tag">Billing</span>
+            <span class="tag">Product Design</span>
+          </div>
+
+          <a
+            href="https://quickbill-ai.ai.studio"
+            target="_blank"
+            class="project-link"
+          >
+            View live product <span>↗</span>
+          </a>
+        </article>
+
+
+        <!-- MEMORA -->
+
+        <article class="project">
+          <div class="project-number">02 / PRODUCT</div>
+
+          <h3>Memora</h3>
+
+          <p>
+            An AI-powered education platform concept designed to help teachers
+            generate study materials, worksheets, quizzes, question papers
+            and other classroom resources faster.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Generative AI</span>
+            <span class="tag">Education</span>
+            <span class="tag">AI Tools</span>
+            <span class="tag">Web App</span>
+          </div>
+
+          <a href="#contact" class="project-link">
+            Project details <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+    <div class="container">
+
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">What I work with.</h2>
+
+      <div class="skills">
+
+        <div class="skill">Generative AI</div>
+        <div class="skill">AI Product Building</div>
+        <div class="skill">Prompt Engineering</div>
+        <div class="skill">AI Automation</div>
+        <div class="skill">Web App Development</div>
+        <div class="skill">UI / UX Design</div>
+        <div class="skill">AI Prototyping</div>
+        <div class="skill">Digital Products</div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container">
+
+      <div class="section-label">About</div>
+
+      <div class="about-grid">
+
+        <h2 class="about-heading">
+          Turning ideas into practical digital products.
+        </h2>
+
+        <div class="about-text">
+
+          <p>
+            I'm Tanish Ahuja, an AI-focused product builder interested in
+            creating useful software with modern AI tools.
+          </p>
+
+          <p>
+            My focus is on taking an idea from concept to working product —
+            including product structure, user experience, AI workflows and
+            practical implementation.
+          </p>
+
+          <p>
+            I'm currently building and experimenting with AI-powered products
+            across business and education.
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>Let's build something useful.</h2>
+
+        <p>
+          Have a project idea, collaboration opportunity or just want to
+          connect? Reach out through one of the platforms below.
+        </p>
+
+        <div class="socials">
+
+          <a
+            href="https://github.com/ahujatanish"
+            target="_blank"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            href="https://www.instagram.com/tanishahuja81/"
+            target="_blank"
+          >
+            Instagram ↗
+          </a>
+
+          <a href="mailto:your-email@example.com">
+            Email ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Tanish Ahuja</span>
+      <span>Built with AI & curiosity.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
