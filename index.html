@@ -4,18 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="description"
-    content="Tanish Ahuja — AI Product Builder creating practical AI-powered applications and digital products."
-  />
-
   <title>Tanish Ahuja — AI Product Builder</title>
 
-  <style>
-    /* =========================
-       RESET
-    ========================= */
+  <meta
+    name="description"
+    content="Tanish Ahuja — AI product builder creating practical AI-powered applications and digital products."
+  />
 
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -27,18 +23,12 @@
     }
 
     body {
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #050505;
       color: #f5f5f5;
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
     a {
@@ -46,1004 +36,454 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    img {
+      display: block;
+      max-width: 100%;
     }
-
-    ::selection {
-      background: #fff;
-      color: #000;
-    }
-
-    /* =========================
-       VARIABLES
-    ========================= */
 
     :root {
-      --background: #050505;
+      --bg: #050505;
       --surface: #0b0b0b;
-      --surface-light: #111;
-      --border: #222;
-      --border-light: #2c2c2c;
-
-      --white: #f5f5f5;
-      --gray-1: #cfcfcf;
-      --gray-2: #999;
-      --gray-3: #666;
-      --gray-4: #444;
-
-      --max-width: 1180px;
+      --surface-2: #101010;
+      --border: #242424;
+      --muted: #999;
+      --soft: #cfcfcf;
+      --white: #fff;
     }
 
-    .container {
-      width: min(92%, var(--max-width));
-      margin: auto;
-    }
-
-    /* =========================
-       BACKGROUND
-    ========================= */
-
-    .background-glow {
-      position: fixed;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.045),
-        transparent 68%
-      );
-      top: -350px;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================= */
+    /* NAVBAR */
 
     nav {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-
-      background: rgba(5, 5, 5, 0.75);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .nav-inner {
+      z-index: 100;
       height: 72px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 6vw;
+      background: rgba(5, 5, 5, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #181818;
     }
 
     .logo {
       font-size: 20px;
       font-weight: 800;
-      letter-spacing: -0.8px;
-    }
-
-    .logo-dot {
-      color: #777;
+      letter-spacing: -0.7px;
     }
 
     .nav-links {
       display: flex;
       gap: 30px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #888;
-      font-size: 13px;
-      transition: 0.25s ease;
+      color: #aaa;
+      font-size: 14px;
     }
 
     .nav-links a:hover {
-      color: #fff;
+      color: white;
     }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* COMMON */
+
+    section {
+      padding: 120px 6vw;
+      border-bottom: 1px solid #151515;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      color: #777;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      max-width: 800px;
+      margin-bottom: 60px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* HERO */
 
     .hero {
-      min-height: 100vh;
-      padding-top: 72px;
-
+      min-height: calc(100vh - 72px);
       display: flex;
       align-items: center;
-
-      position: relative;
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      gap: 80px;
+    .hero-content {
+      max-width: 1000px;
     }
 
-    .availability {
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-
-      padding: 7px 12px;
-
-      border: 1px solid var(--border);
-      background: #090909;
-
+      border: 1px solid #292929;
+      background: #0b0b0b;
+      padding: 8px 14px;
       border-radius: 999px;
-
-      color: #aaa;
-      font-size: 12px;
-
-      margin-bottom: 25px;
+      color: #c7c7c7;
+      font-size: 13px;
+      margin-bottom: 30px;
     }
 
-    .availability-dot {
+    .dot {
       width: 7px;
       height: 7px;
-
+      background: white;
       border-radius: 50%;
-      background: #fff;
-
-      box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
     }
 
     .hero h1 {
-      font-size: clamp(58px, 8vw, 105px);
-      line-height: 0.92;
-
-      letter-spacing: -6px;
-
-      max-width: 850px;
+      font-size: clamp(60px, 9vw, 120px);
+      line-height: 0.88;
+      letter-spacing: -7px;
+      max-width: 1000px;
     }
 
-    .hero-highlight {
-      background: linear-gradient(
-        100deg,
-        #fff 10%,
-        #777 90%
-      );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
+    .hero h1 span {
+      color: #777;
     }
 
     .hero-description {
       max-width: 650px;
-
-      color: var(--gray-2);
-
+      color: #999;
       font-size: 18px;
-
-      margin-top: 30px;
+      margin-top: 35px;
     }
 
-    .hero-actions {
+    .buttons {
       display: flex;
       gap: 12px;
-
+      margin-top: 35px;
       flex-wrap: wrap;
-
-      margin-top: 32px;
     }
 
-    .button {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-
-      padding: 13px 19px;
-
+      padding: 13px 20px;
       border-radius: 9px;
-
-      border: 1px solid var(--border);
-
-      font-size: 13px;
-      font-weight: 700;
-
+      border: 1px solid #292929;
+      font-size: 14px;
       transition: 0.25s ease;
     }
 
-    .button-primary {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
+    .btn-primary {
+      background: white;
+      color: black;
+      border-color: white;
+      font-weight: 700;
     }
 
-    .button-primary:hover {
+    .btn-primary:hover {
+      transform: translateY(-2px);
       background: #ddd;
-      transform: translateY(-2px);
     }
 
-    .button-secondary {
-      background: #0c0c0c;
-      color: #ddd;
+    .btn-secondary {
+      color: white;
     }
 
-    .button-secondary:hover {
-      border-color: #444;
-      transform: translateY(-2px);
+    .btn-secondary:hover {
+      background: #111;
     }
 
-    /* =========================
-       HERO PRODUCT PREVIEW
-    ========================= */
-
-    .hero-preview {
-      position: relative;
-
-      border: 1px solid var(--border);
-
-      background: linear-gradient(
-        145deg,
-        #111,
-        #080808
-      );
-
-      border-radius: 24px;
-
-      padding: 20px;
-
-      box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.5);
-    }
-
-    .preview-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      margin-bottom: 16px;
-    }
-
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .browser-dots span {
-      width: 7px;
-      height: 7px;
-
-      background: #3b3b3b;
-
-      border-radius: 50%;
-    }
-
-    .preview-label {
-      color: #555;
-
-      font-size: 9px;
-
-      letter-spacing: 1.8px;
-
-      text-transform: uppercase;
-    }
-
-    .app-preview {
-      border: 1px solid #242424;
-
-      background: #080808;
-
-      border-radius: 14px;
-
-      padding: 18px;
-    }
-
-    .app-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      margin-bottom: 20px;
-    }
-
-    .app-name {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .app-menu {
-      color: #666;
-      font-size: 11px;
-    }
-
-    .invoice-card {
-      border: 1px solid #202020;
-
-      background: #0d0d0d;
-
-      border-radius: 10px;
-
-      padding: 16px;
-    }
-
-    .invoice-top {
-      display: flex;
-      justify-content: space-between;
-
-      margin-bottom: 20px;
-    }
-
-    .invoice-title {
-      color: #ddd;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .invoice-label {
-      color: #555;
-      font-size: 9px;
-    }
-
-    .invoice-row {
-      display: flex;
-      justify-content: space-between;
-
-      padding: 9px 0;
-
-      border-bottom: 1px solid #1b1b1b;
-
-      color: #777;
-
-      font-size: 10px;
-    }
-
-    .invoice-row:last-child {
-      border-bottom: 0;
-    }
-
-    .invoice-total {
-      display: flex;
-      justify-content: space-between;
-
-      padding-top: 13px;
-
-      color: #ddd;
-
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .preview-badge {
-      position: absolute;
-
-      right: -15px;
-      bottom: 25px;
-
-      padding: 10px 13px;
-
-      background: #151515;
-
-      border: 1px solid #2d2d2d;
-
-      border-radius: 9px;
-
-      color: #aaa;
-
-      font-size: 10px;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    section {
-      padding: 120px 0;
-
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .section-label {
-      color: #666;
-
-      font-size: 11px;
-
-      letter-spacing: 2px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 13px;
-    }
-
-    .section-title {
-      font-size: clamp(40px, 5vw, 62px);
-
-      line-height: 1;
-
-      letter-spacing: -3px;
-
-      margin-bottom: 50px;
-    }
-
-    /* =========================
-       PROJECTS
-    ========================= */
+    /* PROJECTS */
 
     .projects {
       display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 80px;
     }
 
     .project {
-      overflow: hidden;
-
       border: 1px solid var(--border);
-
-      background: var(--surface);
-
-      border-radius: 22px;
-
-      transition: 0.3s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-6px);
-
-      border-color: #3a3a3a;
-
-      box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.35);
-    }
-
-    /* Project visual */
-
-    .project-visual {
-      height: 260px;
-
-      padding: 25px;
-
-      position: relative;
-
+      border-radius: 20px;
       overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 70% 20%,
-          rgba(255, 255, 255, 0.07),
-          transparent 38%
-        ),
-        #090909;
-
-      border-bottom: 1px solid #1e1e1e;
+      background: var(--surface);
     }
 
-    .mock-browser {
-      width: 90%;
-      height: 195px;
-
-      margin: auto;
-
-      background: #0d0d0d;
-
-      border: 1px solid #292929;
-
-      border-radius: 10px;
-
-      padding: 13px;
-
-      box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.5);
+    .project-image {
+      background: #0b0b0b;
+      border-bottom: 1px solid var(--border);
+      padding: 18px;
     }
 
-    .mock-browser-top {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-
-      margin-bottom: 15px;
-    }
-
-    .mock-browser-top span {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: #333;
-    }
-
-    .mock-title {
-      width: 42%;
-      height: 8px;
-
-      background: #292929;
-
-      border-radius: 4px;
-
-      margin-bottom: 15px;
-    }
-
-    .mock-cards {
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 7px;
-    }
-
-    .mock-card {
-      height: 42px;
-
-      border: 1px solid #242424;
-
-      background: #090909;
-
-      border-radius: 5px;
-    }
-
-    .mock-lines {
-      margin-top: 10px;
-
-      display: flex;
-      flex-direction: column;
-
-      gap: 6px;
-    }
-
-    .mock-line {
-      height: 6px;
-
+    .project-image img {
       width: 100%;
-
-      background: #242424;
-
-      border-radius: 5px;
+      max-height: 650px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+      border: 1px solid #242424;
     }
-
-    .mock-line:nth-child(2) {
-      width: 76%;
-    }
-
-    .mock-line:nth-child(3) {
-      width: 55%;
-    }
-
-    /* Memora visual */
-
-    .study-preview {
-      width: 90%;
-      height: 195px;
-
-      margin: auto;
-
-      background: #0d0d0d;
-
-      border: 1px solid #292929;
-
-      border-radius: 10px;
-
-      padding: 15px;
-    }
-
-    .study-header {
-      display: flex;
-      justify-content: space-between;
-
-      margin-bottom: 14px;
-    }
-
-    .study-title {
-      width: 38%;
-      height: 8px;
-
-      background: #2a2a2a;
-
-      border-radius: 5px;
-    }
-
-    .study-icon {
-      width: 25px;
-      height: 8px;
-
-      background: #222;
-
-      border-radius: 4px;
-    }
-
-    .study-question {
-      padding: 12px;
-
-      border: 1px solid #222;
-
-      border-radius: 7px;
-
-      background: #090909;
-
-      margin-bottom: 9px;
-    }
-
-    .question-line {
-      width: 65%;
-      height: 6px;
-
-      background: #292929;
-
-      border-radius: 4px;
-
-      margin-bottom: 10px;
-    }
-
-    .answers {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 6px;
-    }
-
-    .answer {
-      height: 25px;
-
-      border: 1px solid #202020;
-
-      border-radius: 5px;
-
-      background: #0c0c0c;
-    }
-
-    /* Project content */
 
     .project-content {
-      padding: 28px;
-    }
-
-    .project-heading {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: flex-start;
-
-      gap: 20px;
-    }
-
-    .project h3 {
-      font-size: 28px;
-
-      line-height: 1;
-
-      letter-spacing: -1px;
+      padding: 35px;
     }
 
     .project-number {
-      color: #555;
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
 
-      font-size: 11px;
+    .project h3 {
+      font-size: 38px;
+      letter-spacing: -1.8px;
+      margin-bottom: 12px;
     }
 
     .project-description {
-      color: var(--gray-2);
-
-      font-size: 14px;
-
-      margin: 15px 0 23px;
+      max-width: 760px;
+      color: #999;
+      font-size: 16px;
     }
 
     .tags {
       display: flex;
-
       flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-bottom: 25px;
+      gap: 8px;
+      margin-top: 22px;
     }
 
     .tag {
-      padding: 5px 9px;
-
-      border: 1px solid #252525;
-
-      border-radius: 6px;
-
-      color: #999;
-
-      font-size: 10px;
+      border: 1px solid #292929;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      color: #aaa;
     }
 
-    .project-link {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      font-size: 13px;
-
-      font-weight: 700;
+    .project-actions {
+      margin-top: 25px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .project-link span {
-      color: #666;
+    /* MEMORA */
 
-      transition: 0.2s;
+    .memora {
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 80% 20%, #151515 0, transparent 35%),
+        #090909;
     }
 
-    .project-link:hover span {
-      transform: translateX(4px);
+    .memora h3 {
+      font-size: 38px;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
     }
 
-    .project-link.disabled {
-      color: #777;
-
-      cursor: default;
+    .status {
+      display: inline-block;
+      border: 1px solid #303030;
+      padding: 6px 11px;
+      border-radius: 999px;
+      color: #aaa;
+      font-size: 11px;
+      margin-bottom: 20px;
     }
 
-    /* =========================
-       SKILLS
-    ========================= */
+    /* SKILLS */
 
-    .skills {
+    .skills-grid {
       display: grid;
-
       grid-template-columns: repeat(4, 1fr);
-
       gap: 12px;
     }
 
     .skill {
-      padding: 23px;
-
-      border: 1px solid #202020;
-
-      border-radius: 13px;
-
-      background: #0a0a0a;
-
-      color: #c7c7c7;
-
-      font-size: 13px;
-
-      transition: 0.25s;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      color: #ccc;
+      background: #090909;
+      transition: 0.25s ease;
     }
 
     .skill:hover {
-      border-color: #3a3a3a;
-
-      background: #101010;
+      border-color: #444;
+      transform: translateY(-3px);
     }
 
-    /* =========================
-       ABOUT
-    ========================= */
+    /* ABOUT */
 
     .about-grid {
       display: grid;
-
       grid-template-columns: 0.8fr 1.2fr;
-
-      gap: 100px;
+      gap: 80px;
     }
 
     .about-heading {
-      font-size: 43px;
-
-      line-height: 1.05;
-
+      font-size: 48px;
+      line-height: 1;
       letter-spacing: -2px;
     }
 
     .about-text {
-      max-width: 650px;
-
-      color: var(--gray-2);
-
-      font-size: 16px;
+      color: #999;
+      font-size: 17px;
     }
 
     .about-text p {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    .about-divider {
-      width: 100%;
-
-      height: 1px;
-
-      background: #222;
-
-      margin: 30px 0;
+    .focus-box {
+      border-top: 1px solid #292929;
+      margin-top: 30px;
+      padding-top: 25px;
+      color: #bbb;
     }
 
-    /* =========================
-       CONTACT
-    ========================= */
+    /* CONTACT */
 
     .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 22px;
       padding: 70px;
-
-      border: 1px solid #242424;
-
-      border-radius: 25px;
-
       background:
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(255, 255, 255, 0.055),
-          transparent 35%
-        ),
-        #0a0a0a;
+        radial-gradient(circle at 80% 20%, #161616 0, transparent 35%),
+        #090909;
     }
 
     .contact-box h2 {
-      max-width: 850px;
-
-      font-size: clamp(42px, 6vw, 76px);
-
-      line-height: 0.95;
-
-      letter-spacing: -4px;
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: 0.92;
+      letter-spacing: -5px;
+      max-width: 800px;
     }
 
     .contact-box p {
-      max-width: 600px;
-
-      color: var(--gray-2);
-
-      margin: 23px 0 30px;
+      max-width: 650px;
+      color: #999;
+      margin-top: 25px;
+      font-size: 17px;
     }
 
-    .social-links {
+    .socials {
       display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 22px;
+      gap: 25px;
+      margin-top: 35px;
     }
 
-    .social-links a {
+    .socials a {
       color: #aaa;
-
-      font-size: 13px;
-
-      border-bottom: 1px solid #333;
-
+      border-bottom: 1px solid #444;
       padding-bottom: 3px;
-
-      transition: 0.2s;
+      font-size: 14px;
     }
 
-    .social-links a:hover {
-      color: #fff;
-
-      border-color: #fff;
+    .socials a:hover {
+      color: white;
+      border-color: white;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    /* FOOTER */
 
     footer {
-      padding: 30px 0;
-
-      color: #555;
-
-      font-size: 11px;
-    }
-
-    .footer-inner {
+      padding: 25px 6vw;
       display: flex;
-
       justify-content: space-between;
-
-      gap: 20px;
+      color: #555;
+      font-size: 12px;
     }
 
-    /* =========================
-       ANIMATION
-    ========================= */
+    /* MOBILE */
 
-    .fade-in {
-      animation: fadeIn 0.8s ease both;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
+    @media (max-width: 800px) {
+      nav {
+        padding: 0 5vw;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 900px) {
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-
-        gap: 55px;
+      .nav-links {
+        gap: 15px;
+        font-size: 12px;
       }
 
-      .hero-preview {
-        max-width: 600px;
+      section {
+        padding: 80px 5vw;
       }
 
-      .projects {
-        grid-template-columns: 1fr;
+      .hero h1 {
+        font-size: 60px;
+        letter-spacing: -4px;
       }
 
-      .skills {
-        grid-template-columns: repeat(2, 1fr);
+      .section-title {
+        font-size: 48px;
+        letter-spacing: -3px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
       .about-grid {
         grid-template-columns: 1fr;
-
         gap: 40px;
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 120px;
-        padding-bottom: 80px;
-      }
-
-      .hero h1 {
-        font-size: clamp(54px, 15vw, 78px);
-
-        letter-spacing: -4px;
-      }
-
-      .hero-description {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 90px 0;
-      }
-
-      .skills {
-        grid-template-columns: 1fr;
-      }
-
-      .about-heading {
-        font-size: 36px;
       }
 
       .contact-box {
         padding: 40px 25px;
       }
 
-      .footer-inner {
-        flex-direction: column;
+      .contact-box h2 {
+        font-size: 52px;
+        letter-spacing: -3px;
       }
 
-      .preview-badge {
-        right: 8px;
+      .project-content {
+        padding: 25px;
+      }
+
+      .project h3 {
+        font-size: 32px;
+      }
+
+      footer {
+        padding: 25px 5vw;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .nav-links a:nth-child(2) {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box h2 {
+        font-size: 44px;
       }
     }
   </style>
@@ -1051,181 +491,61 @@
 
 <body>
 
-  <div class="background-glow"></div>
-
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+  <!-- NAVIGATION -->
 
   <nav>
-    <div class="container nav-inner">
+    <a href="#top" class="logo">Tanish.</a>
 
-      <a href="#" class="logo">
-        Tanish<span class="logo-dot">.</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
 
-  <header class="hero">
+  <section class="hero" id="top">
+    <div class="container hero-content">
 
-    <div class="container hero-grid">
-
-      <div class="fade-in">
-
-        <div class="availability">
-          <span class="availability-dot"></span>
-          AI Product Builder
-        </div>
-
-        <h1>
-          Building
-          <span class="hero-highlight">
-            useful AI products.
-          </span>
-        </h1>
-
-        <p class="hero-description">
-          I turn ideas into practical AI-powered applications and digital
-          products, focusing on useful workflows, clean interfaces and
-          real-world problems.
-        </p>
-
-        <div class="hero-actions">
-
-          <a
-            href="#work"
-            class="button button-primary"
-          >
-            Explore my work ↘
-          </a>
-
-          <a
-            href="#contact"
-            class="button button-secondary"
-          >
-            Get in touch
-          </a>
-
-        </div>
-
+      <div class="badge">
+        <span class="dot"></span>
+        AI Product Builder
       </div>
 
+      <h1>
+        Building useful<br />
+        <span>AI products.</span>
+      </h1>
 
-      <!-- PRODUCT UI PREVIEW -->
+      <p class="hero-description">
+        I create practical AI-powered applications and digital products
+        focused on solving real-world problems through simple and useful
+        experiences.
+      </p>
 
-      <div class="hero-preview fade-in">
+      <div class="buttons">
+        <a href="#work" class="btn btn-primary">
+          Explore my work ↓
+        </a>
 
-        <div class="preview-top">
-
-          <div class="browser-dots">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="preview-label">
-            Product Interface
-          </div>
-
-        </div>
-
-
-        <div class="app-preview">
-
-          <div class="app-header">
-
-            <div class="app-name">
-              QuickBill AI
-            </div>
-
-            <div class="app-menu">
-              Dashboard
-            </div>
-
-          </div>
-
-
-          <div class="invoice-card">
-
-            <div class="invoice-top">
-
-              <div>
-                <div class="invoice-title">
-                  New Invoice
-                </div>
-
-                <div class="invoice-label">
-                  Create and manage bills
-                </div>
-              </div>
-
-              <div class="invoice-label">
-                PDF
-              </div>
-
-            </div>
-
-
-            <div class="invoice-row">
-              <span>Customer</span>
-              <span>—</span>
-            </div>
-
-            <div class="invoice-row">
-              <span>Products</span>
-              <span>—</span>
-            </div>
-
-            <div class="invoice-row">
-              <span>Quantity</span>
-              <span>—</span>
-            </div>
-
-            <div class="invoice-total">
-              <span>Total</span>
-              <span>—</span>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="preview-badge">
-          AI-powered workflow
-        </div>
-
+        <a href="#contact" class="btn btn-secondary">
+          Get in touch
+        </a>
       </div>
 
     </div>
+  </section>
 
-  </header>
 
-
-  <!-- =========================
-       PROJECTS
-  ========================= -->
+  <!-- WORK -->
 
   <section id="work">
-
     <div class="container">
 
-      <div class="section-label">
-        Selected work
-      </div>
+      <div class="eyebrow">Selected work</div>
 
       <h2 class="section-title">
         Products I've built.
@@ -1234,81 +554,123 @@
 
       <div class="projects">
 
-
-        <!-- QUICKBILL AI -->
+        <!-- QUICKBILL -->
 
         <article class="project">
 
-          <div class="project-visual">
-
-            <div class="mock-browser">
-
-              <div class="mock-browser-top">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <div class="mock-title"></div>
-
-              <div class="mock-cards">
-                <div class="mock-card"></div>
-                <div class="mock-card"></div>
-                <div class="mock-card"></div>
-              </div>
-
-              <div class="mock-lines">
-                <div class="mock-line"></div>
-                <div class="mock-line"></div>
-                <div class="mock-line"></div>
-              </div>
-
-            </div>
-
+          <div class="project-image">
+            <img
+              src="Screenshot%20(933).png"
+              alt="QuickBill AI dashboard"
+            />
           </div>
-
 
           <div class="project-content">
 
-            <div class="project-heading">
+            <div class="project-number">01 / PRODUCT</div>
 
-              <h3>
-                QuickBill AI
-              </h3>
-
-              <span class="project-number">
-                01
-              </span>
-
-            </div>
-
+            <h3>QuickBill AI</h3>
 
             <p class="project-description">
               A lightweight billing and invoice application for small
-              businesses to create bills, manage products and customers,
+              businesses. It helps users create bills, manage products
+              and customers, track payments, view business analytics,
               and generate professional PDF invoices.
             </p>
 
-
             <div class="tags">
-
-              <span class="tag">AI</span>
+              <span class="tag">AI Product</span>
               <span class="tag">Web App</span>
               <span class="tag">Billing</span>
-              <span class="tag">Product</span>
-
+              <span class="tag">Analytics</span>
+              <span class="tag">PDF Invoices</span>
             </div>
 
+            <div class="project-actions">
+              <a
+                href="https://quickbill-ai.ai.studio"
+                target="_blank"
+                class="btn btn-primary"
+              >
+                Live Demo ↗
+              </a>
+            </div>
 
-            <a
-              href="https://quickbill-ai.ai.studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-link"
-            >
-              View live product
-              <span>↗</span>
-            </a>
+          </div>
+        </article>
+
+
+        <!-- QUICKBILL SECONDARY SCREENSHOTS -->
+
+        <article class="project">
+
+          <div class="project-image">
+            <img
+              src="Screenshot%20(934).png"
+              alt="QuickBill AI analytics"
+            />
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">QUICKBILL / ANALYTICS</div>
+
+            <h3>Business analytics</h3>
+
+            <p class="project-description">
+              A dashboard for viewing sales, collections and invoice
+              activity across selected periods.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="project">
+
+          <div class="project-image">
+            <img
+              src="Screenshot%20(935).png"
+              alt="QuickBill AI invoice directory"
+            />
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">QUICKBILL / INVOICING</div>
+
+            <h3>Invoice management</h3>
+
+            <p class="project-description">
+              Search, filter and manage generated bills from a central
+              invoice directory.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="project">
+
+          <div class="project-image">
+            <img
+              src="Screenshot%20(936).png"
+              alt="QuickBill AI PDF invoice"
+            />
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-number">QUICKBILL / PDF</div>
+
+            <h3>Professional PDF invoices</h3>
+
+            <p class="project-description">
+              Generate clean, printable PDF bills containing customer,
+              product, payment and billing information.
+            </p>
 
           </div>
 
@@ -1317,250 +679,129 @@
 
         <!-- MEMORA -->
 
-        <article class="project">
+        <article class="memora">
 
-          <div class="project-visual">
-
-            <div class="study-preview">
-
-              <div class="study-header">
-
-                <div class="study-title"></div>
-
-                <div class="study-icon"></div>
-
-              </div>
-
-
-              <div class="study-question">
-
-                <div class="question-line"></div>
-
-                <div class="answers">
-
-                  <div class="answer"></div>
-                  <div class="answer"></div>
-                  <div class="answer"></div>
-                  <div class="answer"></div>
-
-                </div>
-
-              </div>
-
-
-              <div class="study-question">
-
-                <div class="question-line"></div>
-
-                <div class="answers">
-
-                  <div class="answer"></div>
-                  <div class="answer"></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
+          <div class="status">
+            IN DEVELOPMENT
           </div>
 
+          <h3>Memora</h3>
 
-          <div class="project-content">
+          <p class="project-description">
+            An AI education platform concept designed to help teachers
+            create study materials, worksheets, quizzes, question papers
+            and other classroom resources.
+          </p>
 
-            <div class="project-heading">
-
-              <h3>
-                Memora
-              </h3>
-
-              <span class="project-number">
-                02
-              </span>
-
-            </div>
-
-
-            <p class="project-description">
-              An AI education platform concept designed to help teachers
-              create study materials, worksheets, quizzes, question papers
-              and classroom resources.
-            </p>
-
-
-            <div class="tags">
-
-              <span class="tag">Generative AI</span>
-              <span class="tag">Education</span>
-              <span class="tag">AI Tools</span>
-              <span class="tag">Web App</span>
-
-            </div>
-
-
-            <span class="project-link disabled">
-              Project in development
-            </span>
-
+          <div class="tags">
+            <span class="tag">Generative AI</span>
+            <span class="tag">Education</span>
+            <span class="tag">AI Tools</span>
+            <span class="tag">Web App</span>
           </div>
 
         </article>
 
       </div>
-
     </div>
-
   </section>
 
 
-  <!-- =========================
-       SKILLS
-  ========================= -->
+  <!-- SKILLS -->
 
   <section id="skills">
-
     <div class="container">
 
-      <div class="section-label">
-        Capabilities
-      </div>
+      <div class="eyebrow">Capabilities</div>
 
       <h2 class="section-title">
         What I work with.
       </h2>
 
+      <div class="skills-grid">
 
-      <div class="skills">
-
-        <div class="skill">
-          Generative AI
-        </div>
-
-        <div class="skill">
-          AI Product Building
-        </div>
-
-        <div class="skill">
-          Prompt Engineering
-        </div>
-
-        <div class="skill">
-          AI Automation
-        </div>
-
-        <div class="skill">
-          AI Prototyping
-        </div>
-
-        <div class="skill">
-          UI / UX Design
-        </div>
-
-        <div class="skill">
-          Web Applications
-        </div>
-
-        <div class="skill">
-          Digital Products
-        </div>
+        <div class="skill">Generative AI</div>
+        <div class="skill">AI Product Building</div>
+        <div class="skill">Prompt Engineering</div>
+        <div class="skill">AI Prototyping</div>
+        <div class="skill">Google AI Studio</div>
+        <div class="skill">AI Automation</div>
+        <div class="skill">UI / UX Design</div>
+        <div class="skill">Web Applications</div>
 
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+  <!-- ABOUT -->
 
   <section id="about">
+    <div class="container about-grid">
 
-    <div class="container">
+      <div>
+        <div class="eyebrow">About me</div>
 
-      <div class="about-grid">
+        <h2 class="about-heading">
+          From idea to<br />
+          working product.
+        </h2>
+      </div>
 
-        <div>
+      <div class="about-text">
 
-          <div class="section-label">
-            About me
-          </div>
+        <p>
+          I'm Tanish Ahuja, an AI-focused product builder interested
+          in creating useful software with modern AI tools.
+        </p>
 
-          <h2 class="about-heading">
-            From idea to working product.
-          </h2>
+        <p>
+          I like taking an idea from concept to a working product —
+          defining the experience, designing the workflow and turning
+          complicated problems into simple interfaces.
+        </p>
 
-        </div>
+        <p>
+          My current focus is building practical AI products across
+          business, productivity and education.
+        </p>
 
-
-        <div class="about-text">
-
-          <p>
-            I'm Tanish Ahuja, an AI-focused product builder interested
-            in creating useful software with modern AI tools.
-          </p>
-
-          <p>
-            I like taking an idea from concept to a working product —
-            defining the experience, designing the workflow and turning
-            complicated problems into simple interfaces.
-          </p>
-
-          <p>
-            My current focus is building practical AI products across
-            business, productivity and education.
-          </p>
-
-
-          <div class="about-divider"></div>
-
-
-          <p>
-            Currently building:
-            <strong>QuickBill AI</strong> and
-            <strong>Memora</strong>.
-          </p>
-
+        <div class="focus-box">
+          Currently building:
+          <strong>QuickBill AI</strong> and
+          <strong>Memora</strong>.
         </div>
 
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =========================
-       CONTACT
-  ========================= -->
+  <!-- CONTACT -->
 
   <section id="contact">
-
     <div class="container">
 
       <div class="contact-box">
 
-        <div class="section-label">
-          Contact
-        </div>
+        <div class="eyebrow">Contact</div>
 
         <h2>
           Let's build something useful.
         </h2>
 
         <p>
-          Interested in AI products, digital experiences or
-          practical software ideas? Connect with me.
+          Interested in AI products, digital experiences or practical
+          software ideas? Connect with me.
         </p>
 
-
-        <div class="social-links">
+        <div class="socials">
 
           <a
             href="https://github.com/ahujatanish"
             target="_blank"
-            rel="noopener noreferrer"
           >
             GitHub ↗
           </a>
@@ -1568,7 +809,6 @@
           <a
             href="https://www.instagram.com/tanishahuja81/"
             target="_blank"
-            rel="noopener noreferrer"
           >
             Instagram ↗
           </a>
@@ -1578,28 +818,14 @@
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
-
-    <div class="container footer-inner">
-
-      <span>
-        © 2026 Tanish Ahuja
-      </span>
-
-      <span>
-        AI Product Builder
-      </span>
-
-    </div>
-
+    <span>© 2026 Tanish Ahuja</span>
+    <span>AI Product Builder</span>
   </footer>
 
 </body>
