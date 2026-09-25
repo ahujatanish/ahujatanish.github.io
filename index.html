@@ -1,989 +1,1606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Tanish Ahuja — AI Product Builder creating practical AI-powered products and digital experiences.">
-<title>Tanish Ahuja — AI Product Builder</title>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-:root{
-  --bg:#050505;
-  --surface:#0b0b0b;
-  --surface2:#111;
-  --border:#222;
-  --text:#f5f5f5;
-  --muted:#929292;
-  --soft:#c7c7c7;
-  --max:1180px;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-.container{
-  width:min(92%,var(--max));
-  margin:auto;
-}
-
-/* BACKGROUND */
-
-body::before{
-  content:"";
-  position:fixed;
-  width:700px;
-  height:700px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.055),transparent 68%);
-  top:-280px;
-  left:50%;
-  transform:translateX(-50%);
-  pointer-events:none;
-  z-index:-1;
-}
-
-/* NAV */
-
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:100;
-  background:rgba(5,5,5,.72);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.nav-inner{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:-.7px;
-}
-
-.logo span{
-  color:#777;
-}
-
-.nav-links{
-  display:flex;
-  gap:30px;
-  list-style:none;
-}
-
-.nav-links a{
-  color:#888;
-  font-size:13px;
-  transition:.25s;
-}
-
-.nav-links a:hover{
-  color:#fff;
-}
-
-/* HERO */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:72px;
-  position:relative;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.25fr .75fr;
-  align-items:center;
-  gap:80px;
-}
-
-.status{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:7px 12px;
-  border:1px solid #242424;
-  background:#0b0b0b;
-  border-radius:999px;
-  color:#aaa;
-  font-size:12px;
-  margin-bottom:25px;
-}
-
-.status-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#fff;
-  box-shadow:0 0 14px rgba(255,255,255,.7);
-}
-
-h1{
-  font-size:clamp(58px,8vw,104px);
-  line-height:.92;
-  letter-spacing:-6px;
-  max-width:900px;
-}
-
-.hero-gradient{
-  background:linear-gradient(100deg,#fff 15%,#777 85%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-.hero-description{
-  max-width:650px;
-  color:var(--muted);
-  font-size:18px;
-  margin-top:30px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  margin-top:32px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 19px;
-  border-radius:9px;
-  font-size:13px;
-  font-weight:700;
-  border:1px solid var(--border);
-  transition:.25s;
-}
-
-.btn-primary{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-.btn-primary:hover{
-  transform:translateY(-2px);
-  background:#ddd;
-}
-
-.btn-secondary{
-  color:#ddd;
-  background:#0c0c0c;
-}
-
-.btn-secondary:hover{
-  border-color:#444;
-  transform:translateY(-2px);
-}
-
-/* HERO CARD */
-
-.hero-card{
-  position:relative;
-  border:1px solid #242424;
-  background:linear-gradient(145deg,#111,#080808);
-  border-radius:24px;
-  padding:24px;
-  box-shadow:0 30px 100px rgba(0,0,0,.5);
-}
-
-.card-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:30px;
-}
-
-.window-dots{
-  display:flex;
-  gap:6px;
-}
-
-.window-dots i{
-  width:7px;
-  height:7px;
-  background:#444;
-  border-radius:50%;
-}
-
-.card-label{
-  font-size:10px;
-  color:#666;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-}
-
-.dashboard-preview{
-  border:1px solid #202020;
-  border-radius:14px;
-  padding:18px;
-  background:#080808;
-}
-
-.preview-title{
-  font-size:13px;
-  color:#999;
-  margin-bottom:18px;
-}
-
-.preview-number{
-  font-size:38px;
-  font-weight:800;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-
-.chart{
-  height:100px;
-  display:flex;
-  align-items:end;
-  gap:8px;
-}
-
-.bar{
-  flex:1;
-  background:linear-gradient(to top,#333,#777);
-  border-radius:4px 4px 0 0;
-}
-
-.bar:nth-child(1){height:35%}
-.bar:nth-child(2){height:52%}
-.bar:nth-child(3){height:44%}
-.bar:nth-child(4){height:70%}
-.bar:nth-child(5){height:60%}
-.bar:nth-child(6){height:86%}
-.bar:nth-child(7){height:76%}
-
-.floating{
-  position:absolute;
-  right:-18px;
-  bottom:28px;
-  padding:12px 15px;
-  background:#151515;
-  border:1px solid #2c2c2c;
-  border-radius:10px;
-  font-size:11px;
-  color:#aaa;
-}
-
-/* SECTIONS */
-
-section{
-  padding:120px 0;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-
-.section-kicker{
-  color:#666;
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:13px;
-}
-
-.section-title{
-  font-size:clamp(38px,5vw,62px);
-  letter-spacing:-3px;
-  line-height:1;
-  margin-bottom:50px;
-}
-
-/* PROJECTS */
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-}
-
-.project{
-  border:1px solid var(--border);
-  background:var(--surface);
-  border-radius:22px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.project:hover{
-  transform:translateY(-6px);
-  border-color:#3a3a3a;
-  box-shadow:0 25px 70px rgba(0,0,0,.3);
-}
-
-.project-visual{
-  height:250px;
-  padding:22px;
-  background:
-    radial-gradient(circle at 70% 20%,rgba(255,255,255,.09),transparent 35%),
-    #0a0a0a;
-  border-bottom:1px solid #1e1e1e;
-  position:relative;
-  overflow:hidden;
-}
-
-.mock-window{
-  width:88%;
-  height:190px;
-  margin:auto;
-  background:#111;
-  border:1px solid #292929;
-  border-radius:10px;
-  padding:13px;
-  box-shadow:0 20px 50px rgba(0,0,0,.5);
-}
-
-.mock-header{
-  height:12px;
-  width:45%;
-  background:#292929;
-  border-radius:4px;
-  margin-bottom:15px;
-}
-
-.mock-row{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:8px;
-}
-
-.mock-box{
-  height:50px;
-  border:1px solid #252525;
-  border-radius:6px;
-  background:#0b0b0b;
-}
-
-.mock-table{
-  margin-top:10px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.mock-line{
-  height:7px;
-  background:#242424;
-  border-radius:4px;
-}
-
-.mock-line:nth-child(2){
-  width:75%;
-}
-
-.mock-line:nth-child(3){
-  width:55%;
-}
-
-.project-content{
-  padding:27px;
-}
-
-.project-top{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.project h3{
-  font-size:28px;
-  letter-spacing:-1px;
-}
-
-.project-number{
-  color:#555;
-  font-size:11px;
-}
-
-.project-description{
-  color:var(--muted);
-  font-size:14px;
-  margin:12px 0 22px;
-}
-
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-bottom:24px;
-}
-
-.tag{
-  border:1px solid #252525;
-  color:#999;
-  padding:5px 9px;
-  border-radius:6px;
-  font-size:10px;
-}
-
-.project-action{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  font-size:13px;
-  font-weight:700;
-}
-
-.project-action span{
-  color:#666;
-  transition:.2s;
-}
-
-.project-action:hover span{
-  transform:translateX(4px);
-}
-
-/* SKILLS */
-
-.skills{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.skill{
-  padding:23px;
-  background:#0a0a0a;
-  border:1px solid #202020;
-  border-radius:13px;
-  color:#c8c8c8;
-  font-size:13px;
-  transition:.25s;
-}
-
-.skill:hover{
-  border-color:#3a3a3a;
-  background:#101010;
-}
-
-/* ABOUT */
-
-.about{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:100px;
-}
-
-.about-heading{
-  font-size:42px;
-  line-height:1.05;
-  letter-spacing:-2px;
-}
-
-.about-text{
-  color:var(--muted);
-  font-size:16px;
-  max-width:650px;
-}
-
-.about-text p{
-  margin-bottom:20px;
-}
-
-.about-line{
-  width:100%;
-  height:1px;
-  background:#222;
-  margin:30px 0;
-}
-
-/* CONTACT */
-
-.contact{
-  border:1px solid #242424;
-  border-radius:25px;
-  padding:70px;
-  background:
-    radial-gradient(circle at 80% 20%,rgba(255,255,255,.07),transparent 35%),
-    #0a0a0a;
-}
-
-.contact h2{
-  font-size:clamp(40px,6vw,72px);
-  line-height:.95;
-  letter-spacing:-4px;
-  max-width:800px;
-}
-
-.contact p{
-  color:var(--muted);
-  margin:22px 0 30px;
-  max-width:600px;
-}
-
-.socials{
-  display:flex;
-  gap:22px;
-  flex-wrap:wrap;
-}
-
-.socials a{
-  color:#aaa;
-  font-size:13px;
-  border-bottom:1px solid #333;
-  padding-bottom:3px;
-}
-
-.socials a:hover{
-  color:#fff;
-  border-color:#fff;
-}
-
-/* FOOTER */
-
-footer{
-  padding:30px 0;
-  color:#555;
-  font-size:11px;
-}
-
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-}
-
-/* ANIMATION */
-
-.fade{
-  animation:fadeUp .8s ease both;
-}
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:50px;
-  }
-
-  .hero{
-    padding-top:120px;
-    padding-bottom:80px;
-  }
-
-  h1{
-    font-size:clamp(54px,15vw,80px);
-    letter-spacing:-4px;
-  }
-
-  .hero-card{
-    max-width:500px;
-  }
-
-  .projects{
-    grid-template-columns:1fr;
-  }
-
-  .skills{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .about{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-
-  .contact{
-    padding:40px 25px;
-  }
-}
-
-@media(max-width:500px){
-
-  section{
-    padding:85px 0;
-  }
-
-  .skills{
-    grid-template-columns:1fr;
-  }
-
-  .hero-description{
-    font-size:16px;
-  }
-
-  .footer-inner{
-    flex-direction:column;
-  }
-
-  .floating{
-    right:10px;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Tanish Ahuja — AI Product Builder creating practical AI-powered applications and digital products."
+  />
+
+  <title>Tanish Ahuja — AI Product Builder</title>
+
+  <style>
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: #f5f5f5;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: #fff;
+      color: #000;
+    }
+
+    /* =========================
+       VARIABLES
+    ========================= */
+
+    :root {
+      --background: #050505;
+      --surface: #0b0b0b;
+      --surface-light: #111;
+      --border: #222;
+      --border-light: #2c2c2c;
+
+      --white: #f5f5f5;
+      --gray-1: #cfcfcf;
+      --gray-2: #999;
+      --gray-3: #666;
+      --gray-4: #444;
+
+      --max-width: 1180px;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    .background-glow {
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.045),
+        transparent 68%
+      );
+      top: -350px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(5, 5, 5, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-inner {
+      height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .logo-dot {
+      color: #777;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #888;
+      font-size: 13px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 72px;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 7px 12px;
+
+      border: 1px solid var(--border);
+      background: #090909;
+
+      border-radius: 999px;
+
+      color: #aaa;
+      font-size: 12px;
+
+      margin-bottom: 25px;
+    }
+
+    .availability-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #fff;
+
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: 0.92;
+
+      letter-spacing: -6px;
+
+      max-width: 850px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(
+        100deg,
+        #fff 10%,
+        #777 90%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      color: var(--gray-2);
+
+      font-size: 18px;
+
+      margin-top: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      padding: 13px 19px;
+
+      border-radius: 9px;
+
+      border: 1px solid var(--border);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: 0.25s ease;
+    }
+
+    .button-primary {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    .button-primary:hover {
+      background: #ddd;
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      background: #0c0c0c;
+      color: #ddd;
+    }
+
+    .button-secondary:hover {
+      border-color: #444;
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       HERO PRODUCT PREVIEW
+    ========================= */
+
+    .hero-preview {
+      position: relative;
+
+      border: 1px solid var(--border);
+
+      background: linear-gradient(
+        145deg,
+        #111,
+        #080808
+      );
+
+      border-radius: 24px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.5);
+    }
+
+    .preview-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 16px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dots span {
+      width: 7px;
+      height: 7px;
+
+      background: #3b3b3b;
+
+      border-radius: 50%;
+    }
+
+    .preview-label {
+      color: #555;
+
+      font-size: 9px;
+
+      letter-spacing: 1.8px;
+
+      text-transform: uppercase;
+    }
+
+    .app-preview {
+      border: 1px solid #242424;
+
+      background: #080808;
+
+      border-radius: 14px;
+
+      padding: 18px;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 20px;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .app-menu {
+      color: #666;
+      font-size: 11px;
+    }
+
+    .invoice-card {
+      border: 1px solid #202020;
+
+      background: #0d0d0d;
+
+      border-radius: 10px;
+
+      padding: 16px;
+    }
+
+    .invoice-top {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 20px;
+    }
+
+    .invoice-title {
+      color: #ddd;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .invoice-label {
+      color: #555;
+      font-size: 9px;
+    }
+
+    .invoice-row {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 9px 0;
+
+      border-bottom: 1px solid #1b1b1b;
+
+      color: #777;
+
+      font-size: 10px;
+    }
+
+    .invoice-row:last-child {
+      border-bottom: 0;
+    }
+
+    .invoice-total {
+      display: flex;
+      justify-content: space-between;
+
+      padding-top: 13px;
+
+      color: #ddd;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .preview-badge {
+      position: absolute;
+
+      right: -15px;
+      bottom: 25px;
+
+      padding: 10px 13px;
+
+      background: #151515;
+
+      border: 1px solid #2d2d2d;
+
+      border-radius: 9px;
+
+      color: #aaa;
+
+      font-size: 10px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 120px 0;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-label {
+      color: #666;
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 13px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 5vw, 62px);
+
+      line-height: 1;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 50px;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .project {
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      border-radius: 22px;
+
+      transition: 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+
+      border-color: #3a3a3a;
+
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Project visual */
+
+    .project-visual {
+      height: 260px;
+
+      padding: 25px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(255, 255, 255, 0.07),
+          transparent 38%
+        ),
+        #090909;
+
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .mock-browser {
+      width: 90%;
+      height: 195px;
+
+      margin: auto;
+
+      background: #0d0d0d;
+
+      border: 1px solid #292929;
+
+      border-radius: 10px;
+
+      padding: 13px;
+
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .mock-browser-top {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      margin-bottom: 15px;
+    }
+
+    .mock-browser-top span {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #333;
+    }
+
+    .mock-title {
+      width: 42%;
+      height: 8px;
+
+      background: #292929;
+
+      border-radius: 4px;
+
+      margin-bottom: 15px;
+    }
+
+    .mock-cards {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 7px;
+    }
+
+    .mock-card {
+      height: 42px;
+
+      border: 1px solid #242424;
+
+      background: #090909;
+
+      border-radius: 5px;
+    }
+
+    .mock-lines {
+      margin-top: 10px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+    .mock-line {
+      height: 6px;
+
+      width: 100%;
+
+      background: #242424;
+
+      border-radius: 5px;
+    }
+
+    .mock-line:nth-child(2) {
+      width: 76%;
+    }
+
+    .mock-line:nth-child(3) {
+      width: 55%;
+    }
+
+    /* Memora visual */
+
+    .study-preview {
+      width: 90%;
+      height: 195px;
+
+      margin: auto;
+
+      background: #0d0d0d;
+
+      border: 1px solid #292929;
+
+      border-radius: 10px;
+
+      padding: 15px;
+    }
+
+    .study-header {
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 14px;
+    }
+
+    .study-title {
+      width: 38%;
+      height: 8px;
+
+      background: #2a2a2a;
+
+      border-radius: 5px;
+    }
+
+    .study-icon {
+      width: 25px;
+      height: 8px;
+
+      background: #222;
+
+      border-radius: 4px;
+    }
+
+    .study-question {
+      padding: 12px;
+
+      border: 1px solid #222;
+
+      border-radius: 7px;
+
+      background: #090909;
+
+      margin-bottom: 9px;
+    }
+
+    .question-line {
+      width: 65%;
+      height: 6px;
+
+      background: #292929;
+
+      border-radius: 4px;
+
+      margin-bottom: 10px;
+    }
+
+    .answers {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 6px;
+    }
+
+    .answer {
+      height: 25px;
+
+      border: 1px solid #202020;
+
+      border-radius: 5px;
+
+      background: #0c0c0c;
+    }
+
+    /* Project content */
+
+    .project-content {
+      padding: 28px;
+    }
+
+    .project-heading {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 20px;
+    }
+
+    .project h3 {
+      font-size: 28px;
+
+      line-height: 1;
+
+      letter-spacing: -1px;
+    }
+
+    .project-number {
+      color: #555;
+
+      font-size: 11px;
+    }
+
+    .project-description {
+      color: var(--gray-2);
+
+      font-size: 14px;
+
+      margin: 15px 0 23px;
+    }
+
+    .tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-bottom: 25px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+
+      border: 1px solid #252525;
+
+      border-radius: 6px;
+
+      color: #999;
+
+      font-size: 10px;
+    }
+
+    .project-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+    .project-link span {
+      color: #666;
+
+      transition: 0.2s;
+    }
+
+    .project-link:hover span {
+      transform: translateX(4px);
+    }
+
+    .project-link.disabled {
+      color: #777;
+
+      cursor: default;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 23px;
+
+      border: 1px solid #202020;
+
+      border-radius: 13px;
+
+      background: #0a0a0a;
+
+      color: #c7c7c7;
+
+      font-size: 13px;
+
+      transition: 0.25s;
+    }
+
+    .skill:hover {
+      border-color: #3a3a3a;
+
+      background: #101010;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 0.8fr 1.2fr;
+
+      gap: 100px;
+    }
+
+    .about-heading {
+      font-size: 43px;
+
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+    }
+
+    .about-text {
+      max-width: 650px;
+
+      color: var(--gray-2);
+
+      font-size: 16px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
+    .about-divider {
+      width: 100%;
+
+      height: 1px;
+
+      background: #222;
+
+      margin: 30px 0;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-box {
+      padding: 70px;
+
+      border: 1px solid #242424;
+
+      border-radius: 25px;
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(255, 255, 255, 0.055),
+          transparent 35%
+        ),
+        #0a0a0a;
+    }
+
+    .contact-box h2 {
+      max-width: 850px;
+
+      font-size: clamp(42px, 6vw, 76px);
+
+      line-height: 0.95;
+
+      letter-spacing: -4px;
+    }
+
+    .contact-box p {
+      max-width: 600px;
+
+      color: var(--gray-2);
+
+      margin: 23px 0 30px;
+    }
+
+    .social-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 22px;
+    }
+
+    .social-links a {
+      color: #aaa;
+
+      font-size: 13px;
+
+      border-bottom: 1px solid #333;
+
+      padding-bottom: 3px;
+
+      transition: 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+
+      border-color: #fff;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 30px 0;
+
+      color: #555;
+
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .fade-in {
+      animation: fadeIn 0.8s ease both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+      .hero-preview {
+        max-width: 600px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 80px;
+      }
+
+      .hero h1 {
+        font-size: clamp(54px, 15vw, 78px);
+
+        letter-spacing: -4px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .about-heading {
+        font-size: 36px;
+      }
+
+      .contact-box {
+        padding: 40px 25px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .preview-badge {
+        right: 8px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="container nav-inner">
-    <a href="#" class="logo">Tanish<span>.</span></a>
+  <div class="background-glow"></div>
 
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
+  <nav>
+    <div class="container nav-inner">
 
-<header class="hero">
-  <div class="container hero-grid">
+      <a href="#" class="logo">
+        Tanish<span class="logo-dot">.</span>
+      </a>
 
-    <div class="hero-content fade">
-
-      <div class="status">
-        <span class="status-dot"></span>
-        AI Product Builder
-      </div>
-
-      <h1>
-        Building
-        <span class="hero-gradient">useful AI products.</span>
-      </h1>
-
-      <p class="hero-description">
-        I turn ideas into practical AI-powered applications and digital
-        products, focusing on useful workflows, clean interfaces and real-world problems.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#work" class="btn btn-primary">Explore my work ↘</a>
-        <a href="#contact" class="btn btn-secondary">Get in touch</a>
-      </div>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
     </div>
+  </nav>
 
 
-    <div class="hero-card fade">
+  <!-- =========================
+       HERO
+  ========================= -->
 
-      <div class="card-top">
-        <div class="window-dots">
-          <i></i><i></i><i></i>
+  <header class="hero">
+
+    <div class="container hero-grid">
+
+      <div class="fade-in">
+
+        <div class="availability">
+          <span class="availability-dot"></span>
+          AI Product Builder
         </div>
 
-        <div class="card-label">Product Dashboard</div>
-      </div>
+        <h1>
+          Building
+          <span class="hero-highlight">
+            useful AI products.
+          </span>
+        </h1>
 
-      <div class="dashboard-preview">
+        <p class="hero-description">
+          I turn ideas into practical AI-powered applications and digital
+          products, focusing on useful workflows, clean interfaces and
+          real-world problems.
+        </p>
 
-        <div class="preview-title">
-          Business Overview
-        </div>
-
-        <div class="preview-number">
-          ₹48,620
-        </div>
-
-        <div class="chart">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-
-      </div>
-
-      <div class="floating">
-        AI-powered workflow
-      </div>
-
-    </div>
-
-  </div>
-</header>
-
-
-<section id="work">
-  <div class="container">
-
-    <div class="section-kicker">Selected work</div>
-    <h2 class="section-title">Things I've built.</h2>
-
-    <div class="projects">
-
-
-      <!-- QUICKBILL -->
-
-      <article class="project">
-
-        <div class="project-visual">
-
-          <div class="mock-window">
-
-            <div class="mock-header"></div>
-
-            <div class="mock-row">
-              <div class="mock-box"></div>
-              <div class="mock-box"></div>
-              <div class="mock-box"></div>
-            </div>
-
-            <div class="mock-table">
-              <div class="mock-line"></div>
-              <div class="mock-line"></div>
-              <div class="mock-line"></div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="project-content">
-
-          <div class="project-top">
-            <h3>QuickBill AI</h3>
-            <span class="project-number">01</span>
-          </div>
-
-          <p class="project-description">
-            A lightweight billing and invoice application for small businesses
-            to create bills, manage products and customers, and generate PDF invoices.
-          </p>
-
-          <div class="tags">
-            <span class="tag">AI</span>
-            <span class="tag">Web App</span>
-            <span class="tag">Billing</span>
-            <span class="tag">Product</span>
-          </div>
+        <div class="hero-actions">
 
           <a
-            class="project-action"
-            href="https://quickbill-ai.ai.studio"
-            target="_blank"
+            href="#work"
+            class="button button-primary"
           >
-            View live product <span>↗</span>
+            Explore my work ↘
+          </a>
+
+          <a
+            href="#contact"
+            class="button button-secondary"
+          >
+            Get in touch
           </a>
 
         </div>
-      </article>
 
-
-      <!-- MEMORA -->
-
-      <article class="project">
-
-        <div class="project-visual">
-
-          <div class="mock-window">
-
-            <div class="mock-header" style="width:60%"></div>
-
-            <div class="mock-row">
-              <div class="mock-box"></div>
-              <div class="mock-box"></div>
-              <div class="mock-box"></div>
-            </div>
-
-            <div class="mock-table">
-              <div class="mock-line"></div>
-              <div class="mock-line"></div>
-              <div class="mock-line"></div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="project-content">
-
-          <div class="project-top">
-            <h3>Memora</h3>
-            <span class="project-number">02</span>
-          </div>
-
-          <p class="project-description">
-            An AI education platform concept for generating study materials,
-            worksheets, quizzes, question papers and classroom resources.
-          </p>
-
-          <div class="tags">
-            <span class="tag">Generative AI</span>
-            <span class="tag">Education</span>
-            <span class="tag">AI Tools</span>
-            <span class="tag">Web App</span>
-          </div>
-
-          <a class="project-action" href="#contact">
-            Project details <span>↗</span>
-          </a>
-
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<section id="skills">
-  <div class="container">
-
-    <div class="section-kicker">Capabilities</div>
-    <h2 class="section-title">What I work with.</h2>
-
-    <div class="skills">
-
-      <div class="skill">Generative AI</div>
-      <div class="skill">AI Product Building</div>
-      <div class="skill">Prompt Engineering</div>
-      <div class="skill">AI Automation</div>
-      <div class="skill">AI Prototyping</div>
-      <div class="skill">UI / UX Design</div>
-      <div class="skill">Web Applications</div>
-      <div class="skill">Digital Products</div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section id="about">
-  <div class="container">
-
-    <div class="about">
-
-      <div>
-        <div class="section-kicker">About me</div>
-
-        <h2 class="about-heading">
-          From idea to working product.
-        </h2>
       </div>
 
-      <div class="about-text">
 
-        <p>
-          I'm Tanish Ahuja, an AI-focused product builder interested in
-          creating useful software with modern AI tools.
-        </p>
+      <!-- PRODUCT UI PREVIEW -->
 
-        <p>
-          I enjoy taking an idea from concept to a working product —
-          defining the experience, building the workflow and turning
-          complicated problems into simple interfaces.
-        </p>
+      <div class="hero-preview fade-in">
 
-        <p>
-          My current focus is building practical AI products across
-          business, productivity and education.
-        </p>
+        <div class="preview-top">
 
-        <div class="about-line"></div>
+          <div class="browser-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-        <p>
-          Currently building → QuickBill AI + Memora
-        </p>
+          <div class="preview-label">
+            Product Interface
+          </div>
+
+        </div>
+
+
+        <div class="app-preview">
+
+          <div class="app-header">
+
+            <div class="app-name">
+              QuickBill AI
+            </div>
+
+            <div class="app-menu">
+              Dashboard
+            </div>
+
+          </div>
+
+
+          <div class="invoice-card">
+
+            <div class="invoice-top">
+
+              <div>
+                <div class="invoice-title">
+                  New Invoice
+                </div>
+
+                <div class="invoice-label">
+                  Create and manage bills
+                </div>
+              </div>
+
+              <div class="invoice-label">
+                PDF
+              </div>
+
+            </div>
+
+
+            <div class="invoice-row">
+              <span>Customer</span>
+              <span>—</span>
+            </div>
+
+            <div class="invoice-row">
+              <span>Products</span>
+              <span>—</span>
+            </div>
+
+            <div class="invoice-row">
+              <span>Quantity</span>
+              <span>—</span>
+            </div>
+
+            <div class="invoice-total">
+              <span>Total</span>
+              <span>—</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="preview-badge">
+          AI-powered workflow
+        </div>
 
       </div>
 
     </div>
 
-  </div>
-</section>
+  </header>
 
 
-<section id="contact">
-  <div class="container">
+  <!-- =========================
+       PROJECTS
+  ========================= -->
 
-    <div class="contact">
+  <section id="work">
 
-      <div class="section-kicker">Contact</div>
+    <div class="container">
 
-      <h2>
-        Have an idea?
-        Let's build it.
+      <div class="section-label">
+        Selected work
+      </div>
+
+      <h2 class="section-title">
+        Products I've built.
       </h2>
 
-      <p>
-        I'm interested in AI products, digital experiences and practical
-        ideas that can become useful software.
-      </p>
 
-      <div class="socials">
+      <div class="projects">
 
-        <a
-          href="https://github.com/ahujatanish"
-          target="_blank"
-        >
-          GitHub ↗
-        </a>
 
-        <a
-          href="https://www.instagram.com/tanishahuja81/"
-          target="_blank"
-        >
-          Instagram ↗
-        </a>
+        <!-- QUICKBILL AI -->
+
+        <article class="project">
+
+          <div class="project-visual">
+
+            <div class="mock-browser">
+
+              <div class="mock-browser-top">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="mock-title"></div>
+
+              <div class="mock-cards">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+
+              <div class="mock-lines">
+                <div class="mock-line"></div>
+                <div class="mock-line"></div>
+                <div class="mock-line"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-content">
+
+            <div class="project-heading">
+
+              <h3>
+                QuickBill AI
+              </h3>
+
+              <span class="project-number">
+                01
+              </span>
+
+            </div>
+
+
+            <p class="project-description">
+              A lightweight billing and invoice application for small
+              businesses to create bills, manage products and customers,
+              and generate professional PDF invoices.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">AI</span>
+              <span class="tag">Web App</span>
+              <span class="tag">Billing</span>
+              <span class="tag">Product</span>
+
+            </div>
+
+
+            <a
+              href="https://quickbill-ai.ai.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-link"
+            >
+              View live product
+              <span>↗</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- MEMORA -->
+
+        <article class="project">
+
+          <div class="project-visual">
+
+            <div class="study-preview">
+
+              <div class="study-header">
+
+                <div class="study-title"></div>
+
+                <div class="study-icon"></div>
+
+              </div>
+
+
+              <div class="study-question">
+
+                <div class="question-line"></div>
+
+                <div class="answers">
+
+                  <div class="answer"></div>
+                  <div class="answer"></div>
+                  <div class="answer"></div>
+                  <div class="answer"></div>
+
+                </div>
+
+              </div>
+
+
+              <div class="study-question">
+
+                <div class="question-line"></div>
+
+                <div class="answers">
+
+                  <div class="answer"></div>
+                  <div class="answer"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="project-content">
+
+            <div class="project-heading">
+
+              <h3>
+                Memora
+              </h3>
+
+              <span class="project-number">
+                02
+              </span>
+
+            </div>
+
+
+            <p class="project-description">
+              An AI education platform concept designed to help teachers
+              create study materials, worksheets, quizzes, question papers
+              and classroom resources.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">Generative AI</span>
+              <span class="tag">Education</span>
+              <span class="tag">AI Tools</span>
+              <span class="tag">Web App</span>
+
+            </div>
+
+
+            <span class="project-link disabled">
+              Project in development
+            </span>
+
+          </div>
+
+        </article>
 
       </div>
 
     </div>
 
-  </div>
-</section>
+  </section>
 
 
-<footer>
-  <div class="container footer-inner">
-    <span>© 2026 Tanish Ahuja</span>
-    <span>AI Product Builder</span>
-  </div>
-</footer>
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-label">
+        Capabilities
+      </div>
+
+      <h2 class="section-title">
+        What I work with.
+      </h2>
+
+
+      <div class="skills">
+
+        <div class="skill">
+          Generative AI
+        </div>
+
+        <div class="skill">
+          AI Product Building
+        </div>
+
+        <div class="skill">
+          Prompt Engineering
+        </div>
+
+        <div class="skill">
+          AI Automation
+        </div>
+
+        <div class="skill">
+          AI Prototyping
+        </div>
+
+        <div class="skill">
+          UI / UX Design
+        </div>
+
+        <div class="skill">
+          Web Applications
+        </div>
+
+        <div class="skill">
+          Digital Products
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="about-grid">
+
+        <div>
+
+          <div class="section-label">
+            About me
+          </div>
+
+          <h2 class="about-heading">
+            From idea to working product.
+          </h2>
+
+        </div>
+
+
+        <div class="about-text">
+
+          <p>
+            I'm Tanish Ahuja, an AI-focused product builder interested
+            in creating useful software with modern AI tools.
+          </p>
+
+          <p>
+            I like taking an idea from concept to a working product —
+            defining the experience, designing the workflow and turning
+            complicated problems into simple interfaces.
+          </p>
+
+          <p>
+            My current focus is building practical AI products across
+            business, productivity and education.
+          </p>
+
+
+          <div class="about-divider"></div>
+
+
+          <p>
+            Currently building:
+            <strong>QuickBill AI</strong> and
+            <strong>Memora</strong>.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div class="section-label">
+          Contact
+        </div>
+
+        <h2>
+          Let's build something useful.
+        </h2>
+
+        <p>
+          Interested in AI products, digital experiences or
+          practical software ideas? Connect with me.
+        </p>
+
+
+        <div class="social-links">
+
+          <a
+            href="https://github.com/ahujatanish"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            href="https://www.instagram.com/tanishahuja81/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <span>
+        © 2026 Tanish Ahuja
+      </span>
+
+      <span>
+        AI Product Builder
+      </span>
+
+    </div>
+
+  </footer>
 
 </body>
 </html>
