@@ -8,34 +8,34 @@
 
   <meta
     name="description"
-    content="Tanish Ahuja is an AI Product Builder creating practical AI-powered web applications and digital products."
+    content="Tanish Ahuja — AI Product Builder creating practical AI-powered web applications and digital products."
   />
 
-  <meta name="theme-color" content="#fff4dc" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --cream: #fff4dc;
-      --cream-light: #fff9ec;
-      --olive: #b4b487;
-      --olive-dark: #85855f;
-      --gold: #f5c968;
-      --gold-soft: #f9df9c;
-      --brown: #4e4542;
-      --brown-light: #6b615c;
-      --white: #ffffff;
+      --cream: #FFF4DC;
+      --cream-2: #FFF9EC;
+      --olive: #B4B487;
+      --olive-dark: #85855F;
+      --gold: #F5C968;
+      --gold-light: #F9DFA0;
+      --brown: #4E4542;
+      --brown-light: #6D625D;
+      --white: #FFFFFF;
+
       --border: rgba(78, 69, 66, 0.14);
-      --shadow: 0 18px 45px rgba(78, 69, 66, 0.10);
+      --shadow: 0 18px 50px rgba(78, 69, 66, 0.12);
+
       --radius: 24px;
-      --max-width: 1180px;
+      --max: 1180px;
     }
 
     * {
@@ -52,7 +52,7 @@
       font-family: "Inter", sans-serif;
       background: var(--cream);
       color: var(--brown);
-      line-height: 1.65;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
@@ -61,74 +61,65 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
     img {
-      max-width: 100%;
       display: block;
+      width: 100%;
     }
 
     .container {
-      width: min(var(--max-width), calc(100% - 40px));
-      margin: 0 auto;
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
+    /* ================= NAVBAR ================= */
 
-    .navbar {
+    header {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(255, 244, 220, 0.92);
+      z-index: 100;
+      background: rgba(255, 244, 220, 0.94);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-inner {
-      min-height: 76px;
+    .nav {
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
     }
 
     .logo {
       font-family: "Manrope", sans-serif;
-      font-weight: 800;
       font-size: 21px;
+      font-weight: 800;
       letter-spacing: -0.04em;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
+    .logo-box {
+      width: 35px;
+      height: 35px;
+      border-radius: 11px;
       background: var(--brown);
       color: var(--cream);
-      font-size: 14px;
-      font-weight: 800;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
     }
 
     .nav-links {
       display: flex;
+      gap: 30px;
       align-items: center;
-      gap: 28px;
     }
 
     .nav-links a {
-      color: var(--brown-light);
       font-size: 14px;
       font-weight: 600;
-      transition: 0.2s ease;
+      color: var(--brown-light);
     }
 
     .nav-links a:hover {
@@ -136,22 +127,17 @@
     }
 
     .nav-contact {
-      padding: 11px 17px;
+      padding: 10px 17px;
       border-radius: 12px;
       background: var(--brown);
       color: var(--cream) !important;
     }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* ================= HERO ================= */
 
     .hero {
       position: relative;
-      min-height: 720px;
-      display: flex;
-      align-items: center;
-      padding: 110px 0 100px;
+      padding: 110px 0 120px;
       overflow: hidden;
     }
 
@@ -160,10 +146,10 @@
       position: absolute;
       width: 480px;
       height: 480px;
-      right: -180px;
-      top: -160px;
+      background: var(--gold-light);
       border-radius: 50%;
-      background: var(--gold-soft);
+      top: -220px;
+      right: -180px;
       opacity: 0.55;
       z-index: -1;
     }
@@ -171,21 +157,21 @@
     .hero::after {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
-      left: -260px;
-      bottom: -220px;
-      border-radius: 50%;
+      width: 500px;
+      height: 500px;
       background: var(--olive);
+      border-radius: 50%;
+      bottom: -350px;
+      left: -300px;
       opacity: 0.18;
       z-index: -1;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 80px;
+      align-items: center;
     }
 
     .eyebrow {
@@ -195,14 +181,14 @@
       padding: 8px 13px;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.42);
-      color: var(--brown-light);
-      font-size: 13px;
-      font-weight: 700;
+      background: rgba(255,255,255,.35);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
       margin-bottom: 24px;
     }
 
-    .eyebrow-dot {
+    .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -212,10 +198,9 @@
     .hero h1 {
       font-family: "Manrope", sans-serif;
       font-size: clamp(48px, 7vw, 78px);
-      line-height: 1.02;
+      line-height: 1.01;
       letter-spacing: -0.065em;
       max-width: 760px;
-      margin-bottom: 28px;
     }
 
     .hero h1 span {
@@ -224,31 +209,28 @@
 
     .hero-description {
       max-width: 650px;
+      margin: 27px 0 34px;
       color: var(--brown-light);
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.8;
-      margin-bottom: 34px;
     }
 
-    .hero-actions {
+    .buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 13px;
+      gap: 12px;
     }
 
     .btn {
+      min-height: 48px;
+      padding: 0 19px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 0 19px;
       border-radius: 13px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      border: 1px solid transparent;
-      transition: 0.22s ease;
-      cursor: pointer;
+      transition: .22s ease;
     }
 
     .btn-primary {
@@ -256,374 +238,254 @@
       color: var(--cream);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(78, 69, 66, 0.18);
-    }
-
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.42);
-      border-color: var(--border);
-      color: var(--brown);
+      background: rgba(255,255,255,.42);
+      border: 1px solid var(--border);
     }
 
-    .btn-secondary:hover {
-      background: var(--white);
+    .btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(78,69,66,.13);
     }
 
     /* Hero visual */
 
-    .hero-card {
-      position: relative;
-      width: 100%;
-      max-width: 430px;
-      margin-left: auto;
-    }
-
-    .visual-window {
-      position: relative;
-      padding: 17px;
-      border: 1px solid rgba(78, 69, 66, 0.14);
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.55);
-      box-shadow: var(--shadow);
-      transform: rotate(2deg);
-    }
-
-    .window-top {
-      display: flex;
-      gap: 7px;
-      padding: 3px 4px 16px;
-    }
-
-    .window-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--olive);
-    }
-
-    .window-content {
-      border-radius: 20px;
-      padding: 28px;
+    .hero-visual {
       background: var(--brown);
+      border-radius: 30px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+
+    .hero-visual-inner {
+      min-height: 410px;
+      border: 1px solid rgba(255,244,220,.15);
+      border-radius: 22px;
+      padding: 28px;
       color: var(--cream);
-      min-height: 390px;
     }
 
-    .mini-label {
-      font-size: 11px;
-      font-weight: 700;
+    .small-label {
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.65;
+      letter-spacing: .16em;
+      opacity: .6;
     }
 
-    .window-content h3 {
+    .hero-visual h3 {
       font-family: "Manrope", sans-serif;
       font-size: 31px;
       line-height: 1.15;
-      margin: 12px 0 28px;
-      letter-spacing: -0.04em;
+      letter-spacing: -.04em;
+      margin: 14px 0 30px;
     }
 
-    .mini-project {
-      padding: 17px;
-      border: 1px solid rgba(255, 244, 220, 0.16);
-      border-radius: 15px;
-      margin-top: 11px;
-      background: rgba(255, 244, 220, 0.06);
+    .hero-project {
+      border: 1px solid rgba(255,244,220,.14);
+      background: rgba(255,244,220,.06);
+      padding: 15px;
+      border-radius: 14px;
+      margin-top: 10px;
     }
 
-    .mini-project strong {
+    .hero-project strong {
       display: block;
       font-size: 14px;
-      margin-bottom: 3px;
     }
 
-    .mini-project span {
-      font-size: 12px;
-      opacity: 0.65;
+    .hero-project small {
+      opacity: .6;
+      font-size: 11px;
     }
 
-    .floating-tag {
-      position: absolute;
-      right: -25px;
-      bottom: 35px;
-      padding: 13px 16px;
-      border-radius: 15px;
-      background: var(--gold);
-      color: var(--brown);
-      font-size: 12px;
-      font-weight: 800;
-      box-shadow: 0 14px 35px rgba(78, 69, 66, 0.15);
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
+    /* ================= GENERAL ================= */
 
     section {
       padding: 110px 0;
     }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 30px;
-      margin-bottom: 48px;
-    }
-
     .section-label {
       color: var(--olive-dark);
-      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: .15em;
+      font-size: 11px;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 11px;
     }
 
     .section-title {
       font-family: "Manrope", sans-serif;
       font-size: clamp(34px, 5vw, 52px);
       line-height: 1.08;
-      letter-spacing: -0.055em;
+      letter-spacing: -.055em;
     }
 
     .section-description {
-      max-width: 480px;
       color: var(--brown-light);
-      font-size: 15px;
+      max-width: 500px;
+      font-size: 14px;
     }
 
-    /* =========================
-       PROJECTS
-    ========================= */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    /* ================= PROJECTS ================= */
 
     #projects {
       background: var(--olive);
     }
 
-    .projects-grid {
+    .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 30px;
     }
 
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 520px;
-      background: var(--cream-light);
-      border: 1px solid rgba(78, 69, 66, 0.11);
+    .project {
+      background: var(--cream-2);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: 0.25s ease;
+      border: 1px solid rgba(78,69,66,.10);
+      box-shadow: 0 15px 40px rgba(78,69,66,.08);
     }
 
-    .project-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 25px 55px rgba(78, 69, 66, 0.16);
-    }
-
-    .project-visual {
-      height: 215px;
-      padding: 20px;
+    .project-image {
+      position: relative;
       background: var(--brown);
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
+      padding: 14px;
     }
 
-    .project-visual::after {
-      content: "";
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: var(--gold);
-      right: -60px;
-      top: -65px;
-      opacity: 0.9;
+    .project-image img {
+      height: 420px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 17px;
+      background: white;
     }
 
-    .visual-window-small {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 244, 220, 0.08);
-      border: 1px solid rgba(255, 244, 220, 0.16);
-      border-radius: 15px;
-      padding: 16px;
-      height: 100%;
-    }
-
-    .visual-line {
-      width: 45%;
-      height: 7px;
-      border-radius: 10px;
-      background: var(--gold);
-      margin-bottom: 18px;
-    }
-
-    .visual-title {
-      font-family: "Manrope", sans-serif;
-      font-size: 23px;
-      font-weight: 800;
-      margin-bottom: 18px;
-      letter-spacing: -0.04em;
-    }
-
-    .visual-boxes {
-      display: flex;
-      gap: 8px;
-    }
-
-    .visual-box {
-      flex: 1;
-      height: 48px;
-      border-radius: 9px;
-      background: rgba(255, 244, 220, 0.12);
-      border: 1px solid rgba(255, 244, 220, 0.12);
-    }
-
-    .project-body {
-      padding: 27px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+    .project-content {
+      padding: 30px;
     }
 
     .project-number {
       color: var(--olive-dark);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
-      margin-bottom: 12px;
+      letter-spacing: .1em;
+      margin-bottom: 9px;
     }
 
-    .project-body h3 {
+    .project-content h3 {
       font-family: "Manrope", sans-serif;
-      font-size: 26px;
-      letter-spacing: -0.04em;
+      font-size: 29px;
+      letter-spacing: -.04em;
       margin-bottom: 10px;
     }
 
-    .project-body p {
+    .project-content p {
       color: var(--brown-light);
       font-size: 14px;
-      line-height: 1.75;
-      margin-bottom: 20px;
+      max-width: 760px;
+      line-height: 1.8;
     }
 
-    .project-tags {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
-      margin-bottom: 24px;
+      margin: 20px 0 23px;
     }
 
-    .project-tag {
-      padding: 6px 9px;
+    .tag {
+      background: rgba(180,180,135,.20);
+      padding: 6px 10px;
       border-radius: 8px;
-      background: rgba(180, 180, 135, 0.18);
-      color: var(--brown-light);
       font-size: 11px;
       font-weight: 700;
     }
 
-    .project-actions {
+    .project-buttons {
       display: flex;
       gap: 9px;
-      margin-top: auto;
+      flex-wrap: wrap;
     }
 
-    .project-actions .btn {
-      min-height: 42px;
-      font-size: 12px;
-      padding: 0 13px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
+    /* ================= ABOUT ================= */
 
     .about-grid {
       display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
+      grid-template-columns: .75fr 1.25fr;
       gap: 80px;
       align-items: start;
     }
 
     .about-card {
-      padding: 30px;
+      padding: 35px;
+      min-height: 280px;
       border-radius: var(--radius);
       background: var(--brown);
       color: var(--cream);
-      min-height: 300px;
     }
 
-    .about-card span {
+    .about-card-label {
       display: inline-block;
-      padding: 8px 11px;
-      border-radius: 9px;
-      background: rgba(255, 244, 220, 0.09);
-      font-size: 11px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: rgba(255,244,220,.08);
+      font-size: 10px;
       font-weight: 800;
+      letter-spacing: .1em;
       margin-bottom: 25px;
     }
 
     .about-card h3 {
       font-family: "Manrope", sans-serif;
-      font-size: 28px;
+      font-size: 29px;
       line-height: 1.25;
-      letter-spacing: -0.04em;
+      letter-spacing: -.04em;
     }
 
     .about-text p {
       color: var(--brown-light);
-      font-size: 16px;
-      margin-bottom: 20px;
+      font-size: 15px;
       line-height: 1.85;
+      margin-bottom: 18px;
     }
 
-    /* =========================
-       SKILLS
-    ========================= */
+    /* ================= SKILLS ================= */
 
-    .skills-section {
-      background: var(--cream-light);
+    #skills {
+      background: var(--cream-2);
     }
 
-    .skills-grid {
+    .skills {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 15px;
     }
 
     .skill {
-      padding: 22px;
       border: 1px solid var(--border);
-      border-radius: 16px;
       background: var(--cream);
-      transition: 0.2s ease;
-    }
-
-    .skill:hover {
-      border-color: rgba(78, 69, 66, 0.28);
-      transform: translateY(-3px);
+      padding: 23px;
+      border-radius: 17px;
     }
 
     .skill-icon {
       width: 38px;
       height: 38px;
-      display: grid;
-      place-items: center;
       border-radius: 11px;
       background: var(--gold);
-      margin-bottom: 17px;
-      font-size: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
       font-weight: 800;
+      margin-bottom: 17px;
     }
 
     .skill h4 {
@@ -632,16 +494,14 @@
     }
 
     .skill p {
-      color: var(--brown-light);
       font-size: 12px;
+      color: var(--brown-light);
       line-height: 1.6;
     }
 
-    /* =========================
-       PROCESS
-    ========================= */
+    /* ================= PROCESS ================= */
 
-    .process-grid {
+    .process {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
@@ -651,87 +511,79 @@
       padding: 28px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.32);
+      background: rgba(255,255,255,.25);
     }
 
     .process-number {
+      color: var(--olive-dark);
       font-family: "Manrope", sans-serif;
       font-size: 40px;
       font-weight: 800;
-      color: var(--olive-dark);
       line-height: 1;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .process-card h3 {
       font-family: "Manrope", sans-serif;
       font-size: 20px;
-      margin-bottom: 9px;
-      letter-spacing: -0.03em;
+      margin-bottom: 8px;
     }
 
     .process-card p {
       color: var(--brown-light);
       font-size: 13px;
-      line-height: 1.75;
+      line-height: 1.7;
     }
 
-    /* =========================
-       CONTACT
-    ========================= */
+    /* ================= CONTACT ================= */
 
-    .contact-section {
-      padding-bottom: 70px;
-    }
-
-    .contact-box {
-      position: relative;
-      overflow: hidden;
-      border-radius: 30px;
-      padding: 70px;
+    .contact {
       background: var(--brown);
       color: var(--cream);
+      border-radius: 30px;
+      padding: 70px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .contact-box::after {
+    .contact::after {
       content: "";
       position: absolute;
       width: 320px;
       height: 320px;
       border-radius: 50%;
       background: var(--gold);
-      right: -100px;
-      top: -140px;
-      opacity: 0.9;
+      right: -120px;
+      top: -150px;
     }
 
     .contact-content {
       position: relative;
       z-index: 2;
-      max-width: 680px;
+      max-width: 700px;
     }
 
     .contact-label {
       color: var(--gold);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+      font-size: 11px;
       font-weight: 800;
-      margin-bottom: 13px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .contact-box h2 {
+    .contact h2 {
       font-family: "Manrope", sans-serif;
-      font-size: clamp(35px, 5vw, 58px);
+      font-size: clamp(36px, 5vw, 58px);
       line-height: 1.05;
-      letter-spacing: -0.055em;
+      letter-spacing: -.055em;
       margin-bottom: 18px;
     }
 
-    .contact-box p {
-      color: rgba(255, 244, 220, 0.72);
-      max-width: 570px;
-      margin-bottom: 28px;
+    .contact p {
+      color: rgba(255,244,220,.7);
+      max-width: 600px;
+      margin-bottom: 25px;
     }
 
     .contact-links {
@@ -741,139 +593,95 @@
     }
 
     .contact-link {
+      border: 1px solid rgba(255,244,220,.17);
       padding: 11px 15px;
-      border: 1px solid rgba(255, 244, 220, 0.17);
       border-radius: 11px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      transition: 0.2s ease;
     }
 
     .contact-link:hover {
-      background: rgba(255, 244, 220, 0.08);
+      background: rgba(255,244,220,.08);
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    /* ================= FOOTER ================= */
 
     footer {
-      padding: 25px 0 40px;
+      padding: 28px 0 40px;
     }
 
-    .footer-inner {
-      padding-top: 25px;
+    .footer {
+      padding-top: 24px;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       color: var(--brown-light);
       font-size: 12px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* ================= MOBILE ================= */
 
-    @media (max-width: 950px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .hero-card {
-        margin: 0 auto;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
+    @media (max-width: 900px) {
+      .hero-grid,
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
       }
 
-      .skills-grid {
+      .hero-visual {
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .skills {
         grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 700px) {
       .container {
-        width: min(100% - 28px, var(--max-width));
+        width: min(var(--max), calc(100% - 28px));
       }
 
       .nav-links {
         display: none;
       }
 
-      .nav-inner {
-        min-height: 68px;
-      }
-
       .hero {
-        padding: 80px 0 70px;
-        min-height: auto;
+        padding: 75px 0;
       }
 
       .hero h1 {
         font-size: 48px;
       }
 
-      .hero-description {
-        font-size: 15px;
-      }
-
       section {
         padding: 75px 0;
       }
 
-      .section-header {
+      .section-head {
         display: block;
-        margin-bottom: 32px;
       }
 
       .section-description {
-        margin-top: 15px;
+        margin-top: 14px;
       }
 
-      .projects-grid,
-      .process-grid {
+      .project-image img {
+        height: 280px;
+      }
+
+      .skills,
+      .process {
         grid-template-columns: 1fr;
       }
 
-      .project-card {
-        min-height: auto;
+      .contact {
+        padding: 42px 25px;
       }
 
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-box {
-        padding: 40px 25px;
-      }
-
-      .footer-inner {
+      .footer {
         flex-direction: column;
-      }
-
-      .floating-tag {
-        right: 10px;
-        bottom: 15px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
+        gap: 8px;
       }
     }
   </style>
@@ -881,22 +689,20 @@
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================== -->
+  <!-- NAVBAR -->
 
-  <header class="navbar">
-    <div class="container nav-inner">
+  <header>
+    <div class="container nav">
 
-      <a href="#top" class="logo">
-        <span class="logo-mark">TA</span>
+      <a href="#home" class="logo">
+        <span class="logo-box">TA</span>
         Tanish Ahuja
       </a>
 
       <nav class="nav-links">
         <a href="#projects">Projects</a>
-        <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#about">About</a>
         <a href="#process">Process</a>
         <a href="#contact" class="nav-contact">Contact</a>
       </nav>
@@ -905,20 +711,19 @@
   </header>
 
 
-  <main id="top">
+  <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
-    <section class="hero">
+    <section class="hero" id="home">
+
       <div class="container hero-grid">
 
         <div>
 
           <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            AI Product Builder
+            <span class="dot"></span>
+            AI PRODUCT BUILDER
           </div>
 
           <h1>
@@ -929,11 +734,12 @@
 
           <p class="hero-description">
             I build practical AI-powered web applications and digital
-            products focused on solving real problems through simple,
-            useful experiences.
+            products focused on useful workflows, clear interfaces
+            and real-world problems.
           </p>
 
-          <div class="hero-actions">
+          <div class="buttons">
+
             <a href="#projects" class="btn btn-primary">
               View Projects →
             </a>
@@ -941,136 +747,113 @@
             <a href="#contact" class="btn btn-secondary">
               Get in touch
             </a>
+
           </div>
 
         </div>
 
 
-        <div class="hero-card">
+        <div class="hero-visual">
 
-          <div class="visual-window">
+          <div class="hero-visual-inner">
 
-            <div class="window-top">
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
+            <div class="small-label">
+              FROM IDEA TO PRODUCT
             </div>
 
-            <div class="window-content">
+            <h3>
+              Practical software,
+              powered by AI.
+            </h3>
 
-              <div class="mini-label">
-                Current Work
-              </div>
-
-              <h3>
-                From idea<br />
-                to working product.
-              </h3>
-
-              <div class="mini-project">
-                <strong>QuickBill AI</strong>
-                <span>Billing & invoice application</span>
-              </div>
-
-              <div class="mini-project">
-                <strong>Memora</strong>
-                <span>AI-powered study workspace</span>
-              </div>
-
-              <div class="mini-project">
-                <strong>AI Resume Analyzer</strong>
-                <span>Resume analysis & improvement</span>
-              </div>
-
+            <div class="hero-project">
+              <strong>01 — QuickBill AI</strong>
+              <small>Billing & invoice application</small>
             </div>
 
-          </div>
+            <div class="hero-project">
+              <strong>02 — Memora</strong>
+              <small>AI study workspace</small>
+            </div>
 
-          <div class="floating-tag">
-            AI × Product × Web
+            <div class="hero-project">
+              <strong>03 — AI Resume Analyzer</strong>
+              <small>Resume analysis & career insights</small>
+            </div>
+
           </div>
 
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- =========================
-         PROJECTS
-    ========================== -->
+    <!-- PROJECTS -->
 
     <section id="projects">
 
       <div class="container">
 
-        <div class="section-header">
+        <div class="section-head">
 
           <div>
-            <div class="section-label">Selected Work</div>
+            <div class="section-label">SELECTED WORK</div>
 
             <h2 class="section-title">
-              Things I've built.
+              Projects I've built.
             </h2>
           </div>
 
           <p class="section-description">
-            A selection of AI-powered applications designed around
-            practical workflows and real user problems.
+            Real applications built around business, education
+            and career workflows.
           </p>
 
         </div>
 
 
-        <div class="projects-grid">
+        <div class="projects">
+
 
           <!-- QUICKBILL -->
 
-          <article class="project-card">
+          <article class="project">
 
-            <div class="project-visual">
+            <div class="project-image">
 
-              <div class="visual-window-small">
-
-                <div class="visual-line"></div>
-
-                <div class="visual-title">
-                  QuickBill AI
-                </div>
-
-                <div class="visual-boxes">
-                  <div class="visual-box"></div>
-                  <div class="visual-box"></div>
-                  <div class="visual-box"></div>
-                </div>
-
-              </div>
+              <img
+                src="./Screenshot%20(933).png"
+                alt="QuickBill AI billing application"
+                loading="lazy"
+              />
 
             </div>
 
-            <div class="project-body">
+            <div class="project-content">
 
               <div class="project-number">
-                01 / PRODUCT
+                01 / BUSINESS SOFTWARE
               </div>
 
               <h3>QuickBill AI</h3>
 
               <p>
-                A practical billing and invoice application for
-                small businesses to create bills, manage products
-                and customers, and generate PDF invoices.
+                AI-powered billing software designed for small
+                businesses to create bills, manage products and
+                customers, and generate professional PDF invoices.
               </p>
 
-              <div class="project-tags">
-                <span class="project-tag">AI</span>
-                <span class="project-tag">React</span>
-                <span class="project-tag">TypeScript</span>
-                <span class="project-tag">Firebase</span>
-                <span class="project-tag">Invoices</span>
+              <div class="tags">
+                <span class="tag">AI</span>
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Billing</span>
               </div>
 
-              <div class="project-actions">
+              <div class="project-buttons">
 
                 <a
                   href="https://quickbill-ai.ai.studio"
@@ -1079,6 +862,15 @@
                   class="btn btn-primary"
                 >
                   Live Demo ↗
+                </a>
+
+                <a
+                  href="https://github.com/ahujatanish"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary"
+                >
+                  GitHub ↗
                 </a>
 
               </div>
@@ -1090,29 +882,19 @@
 
           <!-- MEMORA -->
 
-          <article class="project-card">
+          <article class="project">
 
-            <div class="project-visual">
+            <div class="project-image">
 
-              <div class="visual-window-small">
-
-                <div class="visual-line"></div>
-
-                <div class="visual-title">
-                  Memora
-                </div>
-
-                <div class="visual-boxes">
-                  <div class="visual-box"></div>
-                  <div class="visual-box"></div>
-                  <div class="visual-box"></div>
-                </div>
-
-              </div>
+              <img
+                src="./Screenshot%20(946).png"
+                alt="Memora AI study workspace"
+                loading="lazy"
+              />
 
             </div>
 
-            <div class="project-body">
+            <div class="project-content">
 
               <div class="project-number">
                 02 / EDUCATION
@@ -1121,19 +903,19 @@
               <h3>Memora</h3>
 
               <p>
-                An AI study workspace that brings notes, flashcards,
-                quizzes, exam preparation, study planning and
-                learning progress into one focused experience.
+                An AI study workspace combining notes, flashcards,
+                quizzes, exam preparation, AI tutoring, study plans
+                and learning progress in one focused product.
               </p>
 
-              <div class="project-tags">
-                <span class="project-tag">AI</span>
-                <span class="project-tag">Education</span>
-                <span class="project-tag">Study Tools</span>
-                <span class="project-tag">Web App</span>
+              <div class="tags">
+                <span class="tag">AI</span>
+                <span class="tag">Education</span>
+                <span class="tag">Study Tools</span>
+                <span class="tag">Web App</span>
               </div>
 
-              <div class="project-actions">
+              <div class="project-buttons">
 
                 <a
                   href="https://memorastudy.ai.studio"
@@ -1142,6 +924,15 @@
                   class="btn btn-primary"
                 >
                   Live Demo ↗
+                </a>
+
+                <a
+                  href="https://github.com/ahujatanish"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary"
+                >
+                  GitHub ↗
                 </a>
 
               </div>
@@ -1153,29 +944,19 @@
 
           <!-- RESUME ANALYZER -->
 
-          <article class="project-card">
+          <article class="project">
 
-            <div class="project-visual">
+            <div class="project-image">
 
-              <div class="visual-window-small">
-
-                <div class="visual-line"></div>
-
-                <div class="visual-title">
-                  Resume Analyzer
-                </div>
-
-                <div class="visual-boxes">
-                  <div class="visual-box"></div>
-                  <div class="visual-box"></div>
-                  <div class="visual-box"></div>
-                </div>
-
-              </div>
+              <img
+                src="./Screenshot%202026-10-02%20191540.png"
+                alt="AI Resume Analyzer"
+                loading="lazy"
+              />
 
             </div>
 
-            <div class="project-body">
+            <div class="project-content">
 
               <div class="project-number">
                 03 / CAREER AI
@@ -1184,27 +965,35 @@
               <h3>AI Resume Analyzer</h3>
 
               <p>
-                An AI-powered resume analysis tool that reviews
-                a resume, identifies skills and gaps, and provides
-                practical suggestions for improving the application.
+                An AI-powered resume tool that analyzes uploaded
+                resumes, identifies skills and gaps, and generates
+                practical suggestions for improvement.
               </p>
 
-              <div class="project-tags">
-                <span class="project-tag">AI</span>
-                <span class="project-tag">Resume Analysis</span>
-                <span class="project-tag">Career</span>
-                <span class="project-tag">Web App</span>
+              <div class="tags">
+                <span class="tag">AI</span>
+                <span class="tag">Resume Analysis</span>
+                <span class="tag">Career</span>
+                <span class="tag">Web App</span>
               </div>
 
-              <div class="project-actions">
+              <div class="project-buttons">
 
-                <!-- Replace # with the live URL when deployed -->
                 <a
                   href="#"
                   class="btn btn-secondary"
-                  onclick="return showResumeMessage(event)"
+                  onclick="return false;"
                 >
-                  Coming Soon
+                  Live Demo Soon
+                </a>
+
+                <a
+                  href="https://github.com/ahujatanish"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-secondary"
+                >
+                  GitHub ↗
                 </a>
 
               </div>
@@ -1213,6 +1002,7 @@
 
           </article>
 
+
         </div>
 
       </div>
@@ -1220,9 +1010,7 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    <!-- ABOUT -->
 
     <section id="about">
 
@@ -1230,7 +1018,9 @@
 
         <div class="about-card">
 
-          <span>ABOUT</span>
+          <span class="about-card-label">
+            ABOUT
+          </span>
 
           <h3>
             I like turning ideas
@@ -1242,19 +1032,18 @@
         <div class="about-text">
 
           <div class="section-label">
-            A little about me
+            A LITTLE ABOUT ME
           </div>
 
           <p>
             I'm Tanish, an AI Product Builder focused on creating
-            practical web applications with modern AI tools.
+            practical web applications using modern AI tools.
           </p>
 
           <p>
             My work sits between AI, product thinking and web
             development. I enjoy taking an idea, designing the
-            experience, building the application and turning it
-            into something people can actually use.
+            experience and turning it into something people can use.
           </p>
 
           <p>
@@ -1269,18 +1058,16 @@
     </section>
 
 
-    <!-- =========================
-         SKILLS
-    ========================== -->
+    <!-- SKILLS -->
 
-    <section id="skills" class="skills-section">
+    <section id="skills">
 
       <div class="container">
 
-        <div class="section-header">
+        <div class="section-head">
 
           <div>
-            <div class="section-label">Capabilities</div>
+            <div class="section-label">CAPABILITIES</div>
 
             <h2 class="section-title">
               What I work with.
@@ -1288,77 +1075,60 @@
           </div>
 
           <p class="section-description">
-            A practical mix of AI tools, product development,
-            web technologies and automation.
+            AI, web development, product design and automation.
           </p>
 
         </div>
 
 
-        <div class="skills-grid">
+        <div class="skills">
 
           <div class="skill">
             <div class="skill-icon">AI</div>
             <h4>AI Product Building</h4>
-            <p>
-              Designing and building useful AI-powered applications.
-            </p>
+            <p>Building useful AI-powered applications.</p>
           </div>
 
           <div class="skill">
             <div class="skill-icon">{ }</div>
             <h4>Web Applications</h4>
-            <p>
-              Responsive interfaces and functional web experiences.
-            </p>
+            <p>Responsive and functional web experiences.</p>
           </div>
 
           <div class="skill">
             <div class="skill-icon">UX</div>
             <h4>Product UX</h4>
-            <p>
-              Simple interfaces focused on clarity and usability.
-            </p>
+            <p>Simple interfaces focused on usability.</p>
           </div>
 
           <div class="skill">
             <div class="skill-icon">⚙</div>
             <h4>Automation</h4>
-            <p>
-              Exploring AI workflows and automation for repetitive tasks.
-            </p>
+            <p>AI workflows and repetitive task automation.</p>
           </div>
 
           <div class="skill">
             <div class="skill-icon">DB</div>
             <h4>Firebase</h4>
-            <p>
-              Authentication, application data and cloud-based workflows.
-            </p>
+            <p>Authentication and application data workflows.</p>
           </div>
 
           <div class="skill">
             <div class="skill-icon">JS</div>
             <h4>JavaScript</h4>
-            <p>
-              Building interactive application logic and interfaces.
-            </p>
+            <p>Interactive application logic and interfaces.</p>
           </div>
 
           <div class="skill">
             <div class="skill-icon">TS</div>
             <h4>TypeScript</h4>
-            <p>
-              Structured application development with typed code.
-            </p>
+            <p>Structured application development.</p>
           </div>
 
           <div class="skill">
-            <div class="skill-icon">G</div>
+            <div class="skill-icon">GEN</div>
             <h4>Generative AI</h4>
-            <p>
-              Working with AI-assisted development and generative workflows.
-            </p>
+            <p>AI-assisted development and AI workflows.</p>
           </div>
 
         </div>
@@ -1368,18 +1138,16 @@
     </section>
 
 
-    <!-- =========================
-         PROCESS
-    ========================== -->
+    <!-- PROCESS -->
 
     <section id="process">
 
       <div class="container">
 
-        <div class="section-header">
+        <div class="section-head">
 
           <div>
-            <div class="section-label">How I build</div>
+            <div class="section-label">HOW I BUILD</div>
 
             <h2 class="section-title">
               From concept to product.
@@ -1387,54 +1155,43 @@
           </div>
 
           <p class="section-description">
-            A simple approach focused on solving the actual problem
-            instead of adding features just for the sake of features.
+            Understand the problem, build the product and improve
+            the experience.
           </p>
 
         </div>
 
 
-        <div class="process-grid">
+        <div class="process">
 
           <div class="process-card">
-
             <div class="process-number">01</div>
 
             <h3>Understand</h3>
 
             <p>
-              Start with the problem, the target user and the
-              outcome the product needs to achieve.
+              Start with the problem, target user and desired outcome.
             </p>
-
           </div>
 
-
           <div class="process-card">
-
             <div class="process-number">02</div>
 
             <h3>Build</h3>
 
             <p>
-              Turn the idea into a clear interface and working
-              AI-powered functionality.
+              Turn the idea into a clear interface and working product.
             </p>
-
           </div>
 
-
           <div class="process-card">
-
             <div class="process-number">03</div>
 
             <h3>Improve</h3>
 
             <p>
-              Test the experience, fix problems and refine the
-              product based on what actually matters.
+              Test, fix and refine what actually matters to the user.
             </p>
-
           </div>
 
         </div>
@@ -1444,20 +1201,18 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+    <!-- CONTACT -->
 
-    <section id="contact" class="contact-section">
+    <section id="contact">
 
       <div class="container">
 
-        <div class="contact-box">
+        <div class="contact">
 
           <div class="contact-content">
 
             <div class="contact-label">
-              Let's connect
+              LET'S CONNECT
             </div>
 
             <h2>
@@ -1466,8 +1221,8 @@
 
             <p>
               I'm interested in AI products, web applications,
-              automation and opportunities where I can build
-              useful technology.
+              automation and opportunities where I can build useful
+              technology.
             </p>
 
             <div class="contact-links">
@@ -1503,38 +1258,17 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
   <footer>
 
-    <div class="container footer-inner">
+    <div class="container footer">
 
-      <span>
-        © 2026 Tanish Ahuja
-      </span>
+      <span>© 2026 Tanish Ahuja</span>
 
-      <span>
-        AI Product Builder
-      </span>
+      <span>AI Product Builder</span>
 
     </div>
 
   </footer>
-
-
-  <script>
-    function showResumeMessage(event) {
-      event.preventDefault();
-
-      alert(
-        "The AI Resume Analyzer is currently being prepared for deployment. The live demo link will be added here soon."
-      );
-
-      return false;
-    }
-  </script>
 
 </body>
 </html>
